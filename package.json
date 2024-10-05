@@ -1,0 +1,75 @@
+{
+  "name": "react-text-renderer-components",
+  "version": "1.0.0",
+  "description": "a zero-dependencies component library providing (pure) text rendering for common and custom data/field types.",
+  "source": "src/index.ts",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/types.d.ts",
+  "scripts": {
+    "prepare": "husky",
+    "watch": "parcel watch",
+    "build": "parcel build",
+    "clean": "rimraf dist .parcel-cache",
+    "lint": "eslint",
+    "lint:fix": "eslint --fix",
+    "lint:inspect": "eslint --inspect-config",
+    "check": "tsc --noEmit src/index.ts --jsx react-jsx --esModuleInterop --skipLibCheck",
+    "test": "jest --collectCoverage false",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/khatastroffik/react-text-renderer-components.git"
+  },
+  "keywords": [
+    "react",
+    "components",
+    "renderer"
+  ],
+  "author": "Loïs Bégué",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/khatastroffik/react-text-renderer-components/issues"
+  },
+  "homepage": "https://github.com/khatastroffik/react-text-renderer-components#readme",
+  "devDependencies": {
+    "@eslint/compat": "^1.2.0",
+    "@eslint/js": "^9.12.0",
+    "@parcel/packager-ts": "^2.12.0",
+    "@parcel/transformer-typescript-types": "^2.12.0",
+    "@testing-library/jest-dom": "^6.5.0",
+    "@testing-library/react": "^16.0.1",
+    "@types/jest": "^29.5.13",
+    "@types/react": "^18.3.11",
+    "eslint": "^9.12.0",
+    "eslint-plugin-react": "^7.37.1",
+    "globals": "^15.10.0",
+    "husky": "^9.1.6",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "lint-staged": "^15.2.10",
+    "parcel": "^2.12.0",
+    "react": "^18.3.1",
+    "react-test-renderer": "^18.3.1",
+    "rimraf": "^6.0.1",
+    "ts-jest": "^29.2.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.2",
+    "typescript-eslint": "^8.8.0"
+  },
+  "peerDependencies": {
+    "react": "^18.3.1"
+  },
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "npm run lint --",
+      "jest --bail --findRelatedTests"
+    ]
+  },
+  "files": [
+    "/dist"
+  ]
+}
