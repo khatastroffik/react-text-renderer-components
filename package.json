@@ -15,9 +15,10 @@
     "lint:fix": "eslint --fix",
     "lint:inspect": "eslint --inspect-config",
     "check": "tsc --noEmit src/index.ts --jsx react-jsx --esModuleInterop --skipLibCheck",
-    "test": "jest --collectCoverage false",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest"
+    "test": "jest --verbose",
+    "test:watch": "jest --watch --verbose",
+    "test:watchall": "jest --watchAll --verbose",
+    "test:coverage": "jest --collectCoverage"
   },
   "repository": {
     "type": "git",
