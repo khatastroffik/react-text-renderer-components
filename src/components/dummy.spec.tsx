@@ -1,8 +1,9 @@
 import React from "react";
-import { cleanup, render } from '@testing-library/react';
+import { render } from '@testing-library/react';
+// import { cleanup, render } from '@testing-library/react';
 import { Dummy } from "./dummy";
 
-afterEach(cleanup);
+// afterEach(cleanup);
 
 describe("Dummy component", () => {
   it("should render the text 'dummy'", () => {
