@@ -1,24 +1,20 @@
 import React from "react";
 import { render } from '@testing-library/react';
-import { DateRenderer } from "./DateRenderer";
-
-// afterEach(cleanup);
-
-const testDateString = "2024-10-06T04:40:55.221Z";
-const testDateValue = new Date(testDateString);
-const manuallyLocalizedTestDateString = testDateValue.toLocaleDateString("De-de");
-const automaticallyLocalizedTestDateString = testDateValue.toLocaleDateString();
+import { DateRenderer, defaultDateRendererFormatOptions } from "./DateRenderer";
+import { dateValue, locale } from "../../../jest.setup";
 
 describe("DateRenderer component", () => {
 
     it("should render a date value to a pure specifically localized date string", () => {
-        const r = render(<DateRenderer value={testDateValue} locale="De-de" pure />);
-        expect(r.container.innerHTML).toEqual(manuallyLocalizedTestDateString);
+        const r = render(<DateRenderer value={dateValue} locale={locale} pure />);
+        const manuallyLocalizedDateString = new Intl.DateTimeFormat(locale, defaultDateRendererFormatOptions).format(dateValue);
+        expect(r.container.innerHTML).toEqual(manuallyLocalizedDateString);
     });
 
     it("should render a date value to a pure localized date string", () => {
-        const r = render(<DateRenderer value={testDateValue} pure />);
-        expect(r.container.innerHTML).toEqual(automaticallyLocalizedTestDateString);
+        const r = render(<DateRenderer value={dateValue} pure />);
+        const automaticallyLocalizedDateString = new Intl.DateTimeFormat(undefined, defaultDateRendererFormatOptions).format(dateValue);
+        expect(r.container.innerHTML).toEqual(automaticallyLocalizedDateString);
     });
 
     it("should render an empty string when a date value is missing", () => {
@@ -26,13 +22,15 @@ describe("DateRenderer component", () => {
         expect(r.container.innerHTML).toEqual("");
     });
 
-    // it("protected method 'getFormatedText()' should return a localized date string", () => {
-    //     class DateRendererWrapper extends DateRenderer {
-    //         public getFormatedText() {
-    //             return super.getFormatedText();
-    //         }
-    //     }
-    //     const component = new DateRendererWrapper({ value: testDateValue });
-    //     expect(component.getFormatedText()).toEqual(automaticallyLocalizedTestDateString);
-    // });
+    it("protected method 'getFormatedText()' should return a localized date string", () => {
+        class DateRendererWrapper extends DateRenderer {
+            public getFormatedText() {
+                return super.getFormatedText();
+            }
+        }
+        const component = new DateRendererWrapper({ value: dateValue });
+        const automaticallyLocalizedDateString = new Intl.DateTimeFormat(undefined, defaultDateRendererFormatOptions).format(dateValue);
+        expect(component.getFormatedText()).toEqual(automaticallyLocalizedDateString);
+    });
+
 });
