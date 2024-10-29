@@ -1,0 +1,42 @@
+name: Publish Storybook Documentation
+
+on:
+  release:
+    types: [created]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build-and-publish:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}  
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Nodejs
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: npm install
+        run: npm ci
+      - name: Build Storybook
+        run: npm run build:storybook
+      - name: Configure GH pages
+        uses: actions/configure-pages@v5
+      - name: Upload Storybook Documentation
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './storybook-static'  
+      - name: Deploy Storybook to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
