@@ -36,7 +36,7 @@
   "bugs": {
     "url": "https://github.com/khatastroffik/react-text-renderer-components/issues"
   },
-  "homepage": "https://github.com/khatastroffik/react-text-renderer-components#readme",
+  "homepage": "https://khatastroffik.github.io/react-text-renderer-components",
   "devDependencies": {
     "@eslint/compat": "^1.2.0",
     "@eslint/js": "^9.12.0",

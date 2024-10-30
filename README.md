@@ -1,16 +1,20 @@
 # react-text-renderer-components
 
-! MANAGE AND RENDER YOUR DATA, NOT THEIR STRING REPRESENTATION !
+! MANAGE YOUR DATA, NOT THEIR STRING REPRESENTATION !
 
 This is a zero-dependencies component library providing a set of (pure) text rendering utility components. Those components are accepting common and custom data/field types as input and are rendering their text representation *automatically*.
 
 e.g. to render the text corresponding to a `DateOfBirth` field (Date type) within an html-table cell, use a simple `<td><DateRenderer value={person.DateOfBirth} /></td>` statement.
 
+## Storybook Documentation
+
+Overall [Storybook Documentation](https://khatastroffik.github.io/react-text-renderer-components) of this component library.
+
 ## Available renderer components
 
-- `DateRenderer` component
-- `TimeRenderer` component
-- `DateTimeRenderer` component
+- `DateRenderer` component ([Storybook &rarr; DateRenderer](https://khatastroffik.github.io/react-text-renderer-components/?path=/docs/components-daterenderer--daterenderer-documentation))
+- `TimeRenderer` component ([Storybook &rarr; TimeRenderer](https://khatastroffik.github.io/react-text-renderer-components/?path=/docs/components-timerenderer--timerenderer-documentation))
+- `DateTimeRenderer` component ([Storybook &rarr; DateTimeRenderer](https://khatastroffik.github.io/react-text-renderer-components/?path=/docs/components-datetimerenderer--datetimerenderer-documentation))
 
 more components to come... (see the ToDos below)
 
@@ -46,7 +50,7 @@ more features to come (see the ToDos below)
     <DateRenderer value={new Date()} />
     <DateRenderer value={new Date()} pure />
     <DateRenderer value={new Date()} pure={isPureDisplay} />
-    <DateRenderer value={new Date()} pure locale="fr-Fr" />
+    <DateRenderer value={new Date()} pure locale="fr-FR" />
     ```
 
 - note:  
@@ -68,7 +72,7 @@ this function is rendering a date using a "*medium*" date style format option. A
     <TimeRenderer value={new Date()} />
     <TimeRenderer value={new Date()} pure />
     <TimeRenderer value={new Date()} pure={isPureDisplay} />
-    <TimeRenderer value={new Date()} pure locale="fr-Fr" />
+    <TimeRenderer value={new Date()} pure locale="fr-FR" />
     ```
 
 - note:  
@@ -92,7 +96,7 @@ this function is rendering a date using a "*medium*" time style format option. A
     <DateTimeRenderer value={new Date()} pure />
     <DateTimeRenderer value={new Date()} formatOptions={ { dateStyle: "long", timeStyle: "short" } }  locale="en-US" />
     <DateTimeRenderer value={new Date()} formatOptions={ { dateStyle: "full", timeStyle: "short", timeZone: "Australia/Sydney", hour12: true, calendar: "persian" } }  locale="it-IT" />
-    <DateTimeRenderer value={new Date()} pure locale="fr-Fr" />
+    <DateTimeRenderer value={new Date()} pure locale="fr-FR" />
     ```
 - note:  
 this function is rendering a 'date + time' using a "*short*" date + "*short*" time style format options. Alternative: use the `formatOptions` property of this component in order to define and use custom format options.
@@ -235,12 +239,13 @@ To enhance the properties of the renderer class i.e to add properties to be pass
 
 ```typescript
 export interface IIconizedRendererProps extends IAbstractRendererProps {
-    iconName: string;
+    icon: string;
 }
 
 export class IconizedRenderer extends AbstractRenderer<string, IIconizedRendererProps> {
     protected getFormatedText(): string {
-        return this.value ? `${this.value.name} (${this.value.email})` : "";
+        // do whatever you like with the additional property
+        return this.value ?? this.icon;
     }
 }
 ```
@@ -274,11 +279,11 @@ export class VerySpecialRenderer extends AbstractRenderer<ISpecialValueType, ISp
 
 A standard approach consists in calling one of the formating methodes of the `Date` class, such as `toLocaleString(...)` and similar.
 
-There's a **drawback** of using this approach when dealing with large amount of data i.e. of to-be-formated date values, as stated in the [MSDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString) documentation:
+There's a potential **negative impact** of using this approach when dealing with large amount of data i.e. a lot of "to-be-formated" date values, as stated in the [MSDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString) documentation:
 
 > Every time toLocaleString is called, it has to perform a search in a big database of localization strings, which is *potentially inefficient*. When the method is called many times with the same arguments, it is better to create a Intl.DateTimeFormat object and use its format() method, because a DateTimeFormat object remembers the arguments passed to it and may decide to cache a slice of the database, so future format calls can search for localization strings within a more constrained context.
 
-Hence, this library is using the `DateTimeFormat` object and its `format()`method to generate localized and formated output according to the component properties as per:
+Hence, this library is using the `DateTimeFormat` object and its `format()`method to generate localized and formated output (according to the renderer component properties) as per:
 
 - `DateRenderer` is using a `{ dateStyle: "medium" }` format and the optionally provided `locale` property (fallback to system locale if missing). The Output is similar to `06.10.2024` or `10/06/2024` (depending on the locale).
 
