@@ -5,7 +5,7 @@ name: Publish to NPM
 
 on:
   release:
-    types: [created]
+    types: [published]
   workflow_dispatch:
 
 jobs:
@@ -24,6 +24,9 @@ jobs:
   publish-npm:
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write    
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -34,6 +37,6 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - run: npm run build
-      - run: npm publish --access public
+      - run: npm publish --provenance --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_PUPLISH_AUTH_TOKEN}}
