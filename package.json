@@ -1,5 +1,5 @@
 {
-  "name": "react-text-renderer-components",
+  "name": "@khatastroffik/react-text-renderer-components",
   "version": "1.0.0",
   "description": "a zero-dependencies component library providing (pure) text rendering for common and custom data/field types.",
   "source": "src/index.ts",
