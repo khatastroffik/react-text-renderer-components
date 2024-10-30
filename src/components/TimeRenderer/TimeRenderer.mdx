@@ -1,0 +1,34 @@
+import { Primary, Canvas, Source, Meta, ArgTypes, Description, Controls } from '@storybook/blocks';
+import * as TimeRendererStories from './TimeRenderer.stories';
+
+<Meta of={TimeRendererStories} name="TimeRenderer Documentation"  />
+
+# TimeRenderer
+
+<Description of={TimeRendererStories} />
+
+### Preview
+
+<Primary />
+
+### Properties
+
+The text representation can be customized using the appropriates tag attributes i.e. component properties, as described below.
+
+<Controls of={TimeRendererStories.Playground} />
+{/* <ArgTypes of={TimeRendererStories} sort="requiredFirst" /> */}
+
+Notes:
+
+- The values and options used/available within the "Control" column are for demonstration purpose only.
+- Use the "Reset controls" button on the top right side of the table in order to restore the initial demo values and options. Alternatively, you could reload the page.
+
+### Usage
+
+<Source dark type={"jsx"} code={`
+import { TimeRenderer } from 'react-text-renderer-components';
+
+const Example = () => {
+    return <TimeRenderer value={new Date()} />
+}`
+} />

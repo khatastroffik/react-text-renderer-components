@@ -2,6 +2,7 @@
     "compilerOptions": {
       "esModuleInterop": true,
       "jsx": "react",
-      "lib": ["ES2015", "ES2020.Intl"]
+      "lib": ["ES2015", "ES2020.Intl"],
+      "resolveJsonModule": true
     }
   }
