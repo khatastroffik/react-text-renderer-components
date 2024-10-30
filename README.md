@@ -2,9 +2,9 @@
 
 ! MANAGE AND RENDER YOUR DATA, NOT THEIR STRING REPRESENTATION !
 
-This is zero-dependencies component library providing a set of (pure) text rendering utility components accepting common and custom data/field types as input and automatically rendering their text representation.
+This is a zero-dependencies component library providing a set of (pure) text rendering utility components. Those components are accepting common and custom data/field types as input and are rendering their text representation *automatically*.
 
-e.g. display a `CreatedAt` field (Date type) within an html-table cell using a simple `<td><DateRenderer value={item.CreatedAt} /></td>`statement.
+e.g. to render the text corresponding to a `DateOfBirth` field (Date type) within an html-table cell, use a simple `<td><DateRenderer value={person.DateOfBirth} /></td>` statement.
 
 ## Available renderer components
 
@@ -41,7 +41,7 @@ more features to come (see the ToDos below)
     }
     ```
 
-- examples:
+- usage examples:
     ```jsx
     <DateRenderer value={new Date()} />
     <DateRenderer value={new Date()} pure />
@@ -63,7 +63,7 @@ this function is rendering a date using a "*medium*" date style format option. A
     }
     ```
 
-- examples:
+- usage examples:
     ```jsx
     <TimeRenderer value={new Date()} />
     <TimeRenderer value={new Date()} pure />
@@ -86,11 +86,12 @@ this function is rendering a date using a "*medium*" time style format option. A
     }
     ```
 
-- examples:
+- usage examples:
     ```jsx
     <DateTimeRenderer value={new Date()} />
     <DateTimeRenderer value={new Date()} pure />
     <DateTimeRenderer value={new Date()} formatOptions={ { dateStyle: "long", timeStyle: "short" } }  locale="en-US" />
+    <DateTimeRenderer value={new Date()} formatOptions={ { dateStyle: "full", timeStyle: "short", timeZone: "Australia/Sydney", hour12: true, calendar: "persian" } }  locale="it-IT" />
     <DateTimeRenderer value={new Date()} pure locale="fr-Fr" />
     ```
 - note:  
@@ -115,15 +116,11 @@ You may use any package manager cli such as "npm" or "yarn" in order to download
     ```
 1. import any component you'd like to use and insert the corresponding tag and options into your rendering procedure:
     ```jsx
-    import DateRenderer from `@khatastroffik/react-text-renderer-components`;
+    import { DateRenderer } from '@khatastroffik/react-text-renderer-components';
 
-    ...
-    return (
-        <div>
-            <DateRenderer value={ new Date() } />
-        </div>
-    );
-    ...
+    export const Today = () => {
+        return <DateRenderer value={new Date()} />
+    }
     ```
 
 That's it!
@@ -147,12 +144,10 @@ This design allows to avoid repetitions, reduce the size of the compiled code us
 ### Implement supplemental renderer components
 
 - [ ] `CalendarWeekRenderer` component
-- [ ] `QuartalRenderer` component
+- [ ] `QuarterRenderer` component
 - [ ] `TextRenderer` component (with text manipulation like UpperCase, LowerCase, Replace...)
 - [ ] `CurrencyRenderer` component
 - [ ] `CustomRenderer` component i.e the text formating function may be provided from the parent application/component using the CustomRenderer.
-
-TBD: implement `Date` type related component in a UTC variant?
 
 ### Add "common" features to the AbstractRenderer
 
@@ -166,16 +161,13 @@ TBD: implement `Date` type related component in a UTC variant?
 ### project enhancements
 
 - [ ] migrate this todo list to the github issues
-- [ ] describe the github package release process, including the specific `.npmrc` configuration, the library installation process and a simple usage example.
-- [ ] add storybook stories for each component
-- [ ] add a github action in order to deploy the package to npm
-- [ ] add a github action in order to deploy the package as github package within the repository
-- [ ] add a github action in order to build and publish the storybook static page as github page of the repository
+- [x] add storybook stories for each component
+- [x] add a github action in order to deploy the package to npm
+- [x] add a github action in order to deploy the package as github package within the repository
+- [x] add a github action in order to build and publish the storybook static page as github page of the repository
 - [x] provide an example for implementing custom components derived from the AbstractRenderer component
 
-
 ## How to implement your own, custom "renderer" using this library?
-
 
 it is very easy to implement new classes derived from the `AbstractRenderer` class:
  
@@ -189,7 +181,7 @@ Please find some stylized use cases below.
 
 A class as simple as:
 
-```javascript
+```tsx
 export class SpecialRenderer extends AbstractRenderer {
     protected getFormatedText(): string {       
         return this.value ? `&rArr; ${this.value} &lArr;` : "n/a";
@@ -209,7 +201,7 @@ may be used per
 
  ```html
  <span>&rArr; Dramatic-Weasel &lArr;</span>
- Gentle-Breakdown
+ &rArr; Gentle-Breakdown &lArr;
  <span>n/a</span>
  ```
 
@@ -217,7 +209,7 @@ may be used per
 
 in order to define a specific/custom type for the `value` passed to the renderer as a react component property, use the following approach:
 
-```javascript
+```typescript
 import { AbstractRenderer, IAbstractRendererProps, ModifyValueType } from "./AbstractRenderer";
 
 // 1) define your custom data type
@@ -237,11 +229,11 @@ export class PersonRenderer extends AbstractRenderer<Person, IPersonRendererProp
 }
 ```
 
-### Add properties to the renderer class
+### use case #3: Add properties to the renderer class
 
 To enhance the properties of the renderer class i.e to add properties to be passed to the renderer, do apply this technic:
 
-```javascript
+```typescript
 export interface IIconizedRendererProps extends IAbstractRendererProps {
     iconName: string;
 }
@@ -253,7 +245,7 @@ export class IconizedRenderer extends AbstractRenderer<string, IIconizedRenderer
 }
 ```
 
-### Add properties and modify the type of the input value property
+### use case #4: Add properties and modify the type of the input value property
 
 you may also like to combine both modifications i.e. overriding the value type definition and adding properties...
 
@@ -294,7 +286,6 @@ Hence, this library is using the `DateTimeFormat` object and its `format()`metho
 
 - `DateTimeRenderer` is using a `{ dateStyle: "short", timeStyle: "short" }` format and the optionally provided `locale` property (fallback to system locale if missing). The Output isdisplaying both the date and time part and is similar to `07.10.24, 19:25` or `10/7/24, 7:25 PM` (depending on the locale).
 
-
 ## Jest & Testing
 
 ```shell
@@ -303,9 +294,25 @@ npm install -D jest @testing-library/react ts-jest @types/jest ts-node @testing-
 
 ## Some sources of inspiration
 
+### Tests
+
 - https://jestjs.io/docs/tutorial-react
 - https://dev.to/teyim/effortless-testing-setup-for-react-with-vite-typescript-jest-and-react-testing-library-1c48
 - https://www.pluralsight.com/resources/blog/guides/how-to-test-react-components-in-typescript
+
+### Storybook
+
+- https://storybook.js.org/addons/@storybook/addon-docs
+- https://github.com/storybookjs/storybook/blob/master/addons/docs/docs/mdx.md
+- https://storybook.js.org/docs/writing-docs/autodocs#customize-the-docs-container
+- https://storybook.js.org/docs/api/doc-blocks/doc-block-useof
+
+- https://storybook.js.org/addons/@whitespace/storybook-addon-html
+- https://storybook.js.org/addons/storybook-addon-storyout
+- https://storybook.js.org/addons/@storybook/addon-console
+
+### Divers
+
 - https://www.pluralsight.com/resources/blog/guides/how-to-return-plain-text-from-a-react-component
 - https://www.30secondsofcode.org/js/s/day-week-month-quarter-of-year/
 

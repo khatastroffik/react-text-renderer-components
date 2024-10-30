@@ -32,11 +32,13 @@ const config: Config = {
   //   "\\\\node_modules\\\\"
   // ],
   coveragePathIgnorePatterns: [
-    "/node_modules/",
-    "/coverage",
+    "node_modules",
+    "dist",
+    "coverage",
+    "storybook-static",
     "package.json",
     "package-lock.json"
-  ],  
+  ],
 
   // Indicates which provider should be used to instrument code for coverage
   coverageProvider: "v8",

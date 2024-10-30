@@ -1,0 +1,34 @@
+import { Primary, Canvas, Source, Meta, ArgTypes, Description, Controls } from '@storybook/blocks';
+import * as DateTimeRendererStories from './DateTimeRenderer.stories';
+
+<Meta of={DateTimeRendererStories} name="DateTimeRenderer Documentation"  />
+
+# DateTimeRenderer
+
+<Description of={DateTimeRendererStories} />
+
+### Preview
+
+<Primary />
+
+### Properties
+
+The text representation can be customized using the appropriates tag attributes i.e. component properties, as described below.
+
+<Controls of={DateTimeRendererStories.Playground} />
+{/* <ArgTypes of={DateTimeRendererStories} sort="requiredFirst" /> */}
+
+Notes:
+
+- The values and options used/available within the "Control" column are for demonstration purpose only.
+- Use the "Reset controls" button on the top right side of the table in order to restore the initial demo values and options. Alternatively, you could reload the page.
+
+### Usage
+
+<Source dark type={"jsx"} code={`
+import { DateTimeRenderer } from 'react-text-renderer-components';
+
+const Example = () => {
+    return <DateTimeRenderer value={new Date()} />
+}`
+} />
