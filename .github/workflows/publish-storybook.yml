@@ -28,7 +28,7 @@ jobs:
         with:
           node-version: 20
       - name: npm install
-        run: npm ci
+        run: npm ci --ignore-scripts
       - name: Build Storybook
         run: npm run build:storybook
       - name: Configure GH pages
