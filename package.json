@@ -79,7 +79,7 @@
   "lint-staged": {
     "*.{ts,tsx}": [
       "npm run lint --",
-      "jest --bail --findRelatedTests"
+      "jest --bail --findRelatedTests --passWithNoTests"
     ]
   },
   "files": [
