@@ -1,3 +1,5 @@
+
+
 # react-text-renderer-components
 
 ! MANAGE YOUR DATA, NOT THEIR STRING REPRESENTATION !
@@ -5,6 +7,12 @@
 This is a zero-dependencies component library providing a set of (pure) text rendering utility components. Those components are accepting common and custom data/field types as input and are rendering their text representation *automatically*.
 
 e.g. to render the text corresponding to a `DateOfBirth` field (Date type) within an html-table cell, use a simple `<td><DateRenderer value={person.DateOfBirth} /></td>` statement.
+
+![Version](https://img.shields.io/github/package-json/version/khatastroffik/react-text-renderer-components/main?label=Version)
+![License](https://img.shields.io/github/license/khatastroffik/react-text-renderer-components?label=License)
+![Package Build](https://img.shields.io/github/actions/workflow/status/khatastroffik/react-text-renderer-components/.github%2Fworkflows%2Fnpm-publish-github-packages.yml?branch=main&label=Package%20Build)
+![GitHub Issues](https://img.shields.io/github/issues/khatastroffik/react-text-renderer-components)
+![Package size (minified)](https://img.shields.io/bundlejs/size/%40khatastroffik%2Freact-text-renderer-components?label=Package%20size%20(minified))
 
 ## Storybook Documentation
 
@@ -31,75 +39,6 @@ more components to come... (see the ToDos below)
 - use the CustomRenderer component to render any type of data using a simple 'mutation' function of your own (not implemented yet).
 
 more features to come (see the ToDos below)
-
-## API and Usage (overview)
-
-### DateRenderer
-
-- component properties (API):  
-    ```javascript
-    {   
-        value: Date
-        pure: boolean // optional
-        locale: Intl.LocalesArgument // optional
-    }
-    ```
-
-- usage examples:
-    ```jsx
-    <DateRenderer value={new Date()} />
-    <DateRenderer value={new Date()} pure />
-    <DateRenderer value={new Date()} pure={isPureDisplay} />
-    <DateRenderer value={new Date()} pure locale="fr-FR" />
-    ```
-
-- note:  
-this function is rendering a date using a "*medium*" date style format option. Alternative: use the `DateTimeRenderer` component, which is allowing to define and use custom format options.
-
-### TimeRenderer
-
-- component properties (API):
-    ```javascript
-    {   
-        value: Date
-        pure: boolean // optional
-        locale: Intl.LocalesArgument // optional
-    }
-    ```
-
-- usage examples:
-    ```jsx
-    <TimeRenderer value={new Date()} />
-    <TimeRenderer value={new Date()} pure />
-    <TimeRenderer value={new Date()} pure={isPureDisplay} />
-    <TimeRenderer value={new Date()} pure locale="fr-FR" />
-    ```
-
-- note:  
-this function is rendering a date using a "*medium*" time style format option. Alternative: use the `DateTimeRenderer` component, which is allowing to define and use custom format options.
-
-### DateTimeRenderer
-
-- component properties (API):
-    ```javascript
-    {   
-        value: Date
-        pure: boolean // optional
-        locale: Intl.LocalesArgument // optional
-        formatOptions: Intl.DateTimeFormatOptions // optional
-    }
-    ```
-
-- usage examples:
-    ```jsx
-    <DateTimeRenderer value={new Date()} />
-    <DateTimeRenderer value={new Date()} pure />
-    <DateTimeRenderer value={new Date()} formatOptions={ { dateStyle: "long", timeStyle: "short" } }  locale="en-US" />
-    <DateTimeRenderer value={new Date()} formatOptions={ { dateStyle: "full", timeStyle: "short", timeZone: "Australia/Sydney", hour12: true, calendar: "persian" } }  locale="it-IT" />
-    <DateTimeRenderer value={new Date()} pure locale="fr-FR" />
-    ```
-- note:  
-this function is rendering a 'date + time' using a "*short*" date + "*short*" time style format options. Alternative: use the `formatOptions` property of this component in order to define and use custom format options.
 
 ## Installation
 
@@ -133,6 +72,13 @@ That's it!
 
 ## Tech Stack
 
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?logo=typescript&logoColor=white)
+![React Version (Peer Dependency)](https://img.shields.io/github/package-json/dependency-version/khatastroffik/react-text-renderer-components/peer/react?label=React%20(Peer%20Dependency)&logo=react&logoColor=%2361DAFB&labelColor=%2320232a)
+![ESLint](https://img.shields.io/badge/ESLint-4B3263?logo=eslint&logoColor=white)
+![Jest](https://img.shields.io/badge/-jest-%23C21325?logo=jest&logoColor=white)
+[![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?logo=github-actions&logoColor=white)](#)
+![Storybook](https://img.shields.io/badge/Storybook-FF4785?logo=storybook&logoColor=white)
+
 - parcel, react, typeScript
 - tsc, jest, eslint, husky, lint-staged, rimraf, storybook
 - class inheritance, modification of the type of an inherited react component property, DRY, SoC, localization, injection
@@ -147,29 +93,29 @@ This design allows to avoid repetitions, reduce the size of the compiled code us
 
 ### Implement supplemental renderer components
 
-- [ ] `CalendarWeekRenderer` component
-- [ ] `QuarterRenderer` component
-- [ ] `TextRenderer` component (with text manipulation like UpperCase, LowerCase, Replace...)
-- [ ] `CurrencyRenderer` component
-- [ ] `CustomRenderer` component i.e the text formating function may be provided from the parent application/component using the CustomRenderer.
+- ⬛ `CalendarWeekRenderer` component
+- ⬛ `QuarterRenderer` component
+- ⬛ `TextRenderer` component (with text manipulation like UpperCase, LowerCase, Replace...)
+- ⬛ `CurrencyRenderer` component
+- ⬛ `CustomRenderer` component i.e the text formating function may be provided from the parent application/component using the CustomRenderer.
 
 ### Add "common" features to the AbstractRenderer
 
-- [ ] `Tooltip` property
-- [ ] `className` property - for spanned text
-- [ ] `style`property - for spanned text
-- [ ] `ellipsis` css formating - for spanned text
-- [ ] `Aria` related properties - for spanned text
-- [ ] Validate and sanitize/escape the generated/formated stringc prior rendition for Custom Text Renderer classes.
+- ⬛ `Tooltip` property
+- ⬛ `className` property - for spanned text
+- ⬛ `style`property - for spanned text
+- ⬛ `ellipsis` css formating - for spanned text
+- ⬛ `Aria` related properties - for spanned text
+- ⬛ Validate and sanitize/escape the generated/formated stringc prior rendition for Custom Text Renderer classes.
 
 ### project enhancements
 
-- [ ] migrate this todo list to the github issues
-- [x] add storybook stories for each component
-- [x] add a github action in order to deploy the package to npm
-- [x] add a github action in order to deploy the package as github package within the repository
-- [x] add a github action in order to build and publish the storybook static page as github page of the repository
-- [x] provide an example for implementing custom components derived from the AbstractRenderer component
+- ⬛ migrate this todo list to the github issues
+- ✅ add storybook stories for each component
+- ✅ add a github action in order to deploy the package to npm
+- ✅ add a github action in order to deploy the package as github package within the repository
+- ✅ add a github action in order to build and publish the storybook static page as github page of the repository
+- ✅ provide an example for implementing custom components derived from the AbstractRenderer component
 
 ## How to implement your own, custom "renderer" using this library?
 
@@ -315,6 +261,17 @@ npm install -D jest @testing-library/react ts-jest @types/jest ts-node @testing-
 - https://storybook.js.org/addons/@whitespace/storybook-addon-html
 - https://storybook.js.org/addons/storybook-addon-storyout
 - https://storybook.js.org/addons/@storybook/addon-console
+
+### Shiel.io
+
+- https://shields.io/badges/git-hub-actions-workflow-status
+- https://shields.io/badges/git-hub-issues-or-pull-requests
+- https://shields.io/badges/git-hub-license
+- https://shields.io/badges/git-hub-package-json-dynamic-branch
+- https://shields.io/badges/git-hub-package-json-dev-peer-optional-dependency-version
+- https://shields.io/badges/npm-package-minimized-gzipped-size
+- https://github.com/inttter/md-badges
+- https://shields.io/badges/dynamic-json-badge
 
 ### Divers
 
