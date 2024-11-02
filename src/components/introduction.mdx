@@ -27,8 +27,7 @@ import banner from '../../docs/johannes-plenio-2QUvkQTBh5s-unsplash.jpg';
         text-align: right;
         display: inline-block;
     }
-
-    .demooutput {
+    .previewoutput {
         border: 1px solid rgba(255, 255, 255, .1);
         border-radius: 4px;
         box-shadow: rgba(0, 0, 0, 0.20) 1px 2px 3px 1px;
@@ -36,7 +35,55 @@ import banner from '../../docs/johannes-plenio-2QUvkQTBh5s-unsplash.jpg';
         text-align: center;
         margin-top: 2em;
     }
-
+    /********************
+     * ACCORDION
+     ********************/
+    .accordion {
+        margin: 1em 0;
+    }
+    .accordion .docblock-source {
+        margin: 0 !important;
+    }
+    .accordion > input[type="checkbox"] {
+        display: none;
+    }
+    .accordion .content {
+        display: grid;
+        visibility: hidden;
+        grid-template-rows: 0fr;
+        opacity:0;
+        transition: all 0.25s ease-in-out;
+    }
+    .accordion > input[type="checkbox"]:checked ~ .content {
+        visibility: visible;
+        opacity:1;
+        grid-template-rows: 1fr;
+        margin: 0.5em 0;
+    }
+    .accordion label {
+        cursor: pointer;
+        font-size: 14px;
+        padding:  3px 10px;
+        transition: all 0.25s ease-out;
+        border-radius: 4px;
+        // border: 1px solid red;
+        border: 1px solid hsla(203, 50%, 30%, 0.15);
+        // border: 1px solid rgba(255, 255, 255, .1);
+    }
+    .accordion label:hover,.accordion label:focus {
+        background: #1B1C1D;
+        color: #96CBFE;
+        // color: brown;
+    }
+    .accordion .handle label:after {
+        content: "→";
+        display: inline-block;
+        margin-left: 0.5em;
+        min-width: 1em;
+    }
+    .accordion > input[type="checkbox"]:checked ~ .handle label:after {
+        content: "↓";
+    }
 `}
 </style>
 
@@ -47,25 +94,30 @@ import banner from '../../docs/johannes-plenio-2QUvkQTBh5s-unsplash.jpg';
     <div className='by'>by KHATASTROFFIK</div>
 </div>
 
+## TL;DR 
 
-# TL;DR 
+**MANAGE YOUR DATA, NOT THEIR STRING REPRESENTATION!**
 
-**! MANAGE YOUR DATA, NOT THEIR STRING REPRESENTATION !**
+**`react-text-renderer-components`** is a zero-dependencies component library providing a set of (pure) text rendering utility components.
 
-`react-text-renderer-components` is a zero-dependencies component library providing a set of (pure) text rendering utility components.
+## Previews
 
-# Demo
+### DateRenderer
 
-## DateRenderer
-<div >
-    <div className="demooutput">
-        <DateRenderer value={new Date()} /><br />
-        <DateRenderer value={new Date()} locale="en-EN"/><br />
-        <DateRenderer value={new Date()} locale="fr-FR" pure/><br />
-        <DateRenderer value={new Date("2024-10-06T19:40:55.221Z")} locale="fr-FR" /><br />
-        <DateRenderer value={new Date()} locale="it-IT"/><br />
-        <DateRenderer value={new Date()} locale="ja-JP" pure /><br />
-    </div>
+<div className="previewoutput">
+    <DateRenderer value={new Date()} /><br />
+    <DateRenderer value={new Date()} locale="en-EN"/><br />
+    <DateRenderer value={new Date()} locale="fr-FR" pure/><br />
+    <DateRenderer value={new Date("2024-10-06T19:40:55.221Z")} locale="fr-FR" /><br />
+    <DateRenderer value={new Date()} locale="it-IT"/><br />
+    <DateRenderer value={new Date()} locale="ja-JP" pure /><br />
+</div>
+<section class="accordion">
+  <input type="checkbox" name="collapse2" id="preview1" tabindex="0" />
+  <div class="handle" >
+    <label for="preview1">source code</label>
+  </div>
+  <div class="content">
     <Source code={`
 <DateRenderer value={new Date()} />
 <DateRenderer value={new Date()} locale="en-EN"/>
@@ -74,33 +126,46 @@ import banner from '../../docs/johannes-plenio-2QUvkQTBh5s-unsplash.jpg';
 <DateRenderer value={new Date()} locale="it-IT"/>
 <DateRenderer value={new Date()} locale="ja-JP" pure />
     `} dark />
-</div>
+  </div>
+</section>
 
-## TimeRenderer
-<div>
-    <div className="demooutput">
-        <TimeRenderer value={new Date()} /><br />
-        <TimeRenderer value={new Date("2024-10-06T19:40:55.221Z")} pure /><br />
-        <TimeRenderer value={new Date()} locale="en-EN"/><br />
-    </div>
+### TimeRenderer
+
+<div className="previewoutput">
+    <TimeRenderer value={new Date()} /><br />
+    <TimeRenderer value={new Date("2024-10-06T19:40:55.221Z")} pure /><br />
+    <TimeRenderer value={new Date()} locale="en-EN"/><br />
+</div>
+<section class="accordion">
+  <input type="checkbox" name="collapse2" id="preview2" tabindex="0" />
+  <div class="handle" >
+    <label for="preview2">source code</label>
+  </div>
+  <div class="content">
     <Source code={`
 <TimeRenderer value={new Date()} />
 <TimeRenderer value={new Date("2024-10-06T19:40:55.221Z")} pure />
 <TimeRenderer value={new Date()} locale="en-EN"/>
     `} dark />
-</div>
+  </div>
+</section>
 
-## DateTimeRenderer
-<div>
-    <div className="demooutput">
-        <DateTimeRenderer value={new Date()} /><br />
-        <DateTimeRenderer value={new Date()} locale="en-EN" pure /><br />
-        <DateTimeRenderer value={new Date()} locale="fr-FR" formatOptions={{ dateStyle: "full", timeStyle: "short", timeZone: "America/Lima" }} /><br />
-        <DateTimeRenderer value={new Date()} locale="it-IT"/><br />
-        <DateTimeRenderer value={new Date("2024-10-06T19:40:55.221Z")} locale="it-IT" pure/><br />
-        <DateTimeRenderer value={new Date()} locale="ja-JP" formatOptions={{ dateStyle: "full", timeStyle: "full" }}/><br />
-        <DateTimeRenderer value={new Date()} formatOptions={{ dateStyle: "full", timeStyle: "short", timeZone: "Australia/Sydney", hour12: true, calendar: "persian" }} /><br />
-    </div>
+### DateTimeRenderer
+<div className="previewoutput">
+    <DateTimeRenderer value={new Date()} /><br />
+    <DateTimeRenderer value={new Date()} locale="en-EN" pure /><br />
+    <DateTimeRenderer value={new Date()} locale="fr-FR" formatOptions={{ dateStyle: "full", timeStyle: "short", timeZone: "America/Lima" }} /><br />
+    <DateTimeRenderer value={new Date()} locale="it-IT"/><br />
+    <DateTimeRenderer value={new Date("2024-10-06T19:40:55.221Z")} locale="it-IT" pure/><br />
+    <DateTimeRenderer value={new Date()} locale="ja-JP" formatOptions={{ dateStyle: "full", timeStyle: "full" }}/><br />
+    <DateTimeRenderer value={new Date()} formatOptions={{ dateStyle: "full", timeStyle: "short", timeZone: "Australia/Sydney", hour12: true, calendar: "persian" }} /><br />
+</div>
+<section class="accordion">
+  <input type="checkbox" name="collapse2" id="preview3" tabindex="0" />
+  <div class="handle" >
+    <label for="preview3">source code</label>
+  </div>
+  <div class="content">
     <Source code={`
 <DateTimeRenderer value={new Date()} />
 <DateTimeRenderer value={new Date()} locale="en-EN" pure />
@@ -110,17 +175,20 @@ import banner from '../../docs/johannes-plenio-2QUvkQTBh5s-unsplash.jpg';
 <DateTimeRenderer value={new Date()} locale="ja-JP" formatOptions={{ dateStyle: "full", timeStyle: "full" }}/>
 <DateTimeRenderer value={new Date()} formatOptions={{ dateStyle: "full", timeStyle: "short", timeZone: "Australia/Sydney", hour12: true, calendar: "persian" }} />
     `} dark />
-</div>
+  </div>
+</section>
 
 <hr />
 
 <div className="right">Visit the [Github Repository](https://github.com/khatastroffik/react-text-renderer-components)</div>
 
-{/* https://storybook.js.org/docs/writing-stories/naming-components-and-hierarchy
+<hr />
+Photo from <a href="https://unsplash.com/de/@jplenio?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Johannes Plenio</a> on <a href="https://unsplash.com/de/fotos/gewasser-unter-roten-und-weissen-wolken-2QUvkQTBh5s?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+
+{/* 
+https://storybook.js.org/docs/writing-stories/naming-components-and-hierarchy
 https://github.com/storybookjs/storybook/discussions/16503
 https://storybook.js.org/addons/@storybook/addon-docs
-https://egghead.io/lessons/react-add-a-welcome-page-with-sequential-stories-to-a-react-storybook */}
-
-<hr />
-Foto von <a href="https://unsplash.com/de/@jplenio?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Johannes Plenio</a> auf <a href="https://unsplash.com/de/fotos/gewasser-unter-roten-und-weissen-wolken-2QUvkQTBh5s?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
-  
+https://egghead.io/lessons/react-add-a-welcome-page-with-sequential-stories-to-a-react-storybook 
+https://keithjgrant.com/posts/2023/04/transitioning-to-height-auto/
+*/}
