@@ -112,12 +112,12 @@ import banner from '../../docs/johannes-plenio-2QUvkQTBh5s-unsplash.jpg';
     <DateRenderer value={new Date()} locale="it-IT"/><br />
     <DateRenderer value={new Date()} locale="ja-JP" pure /><br />
 </div>
-<section class="accordion">
-  <input type="checkbox" name="collapse2" id="preview1" tabindex="0" />
-  <div class="handle" >
-    <label for="preview1">source code</label>
+<section className="accordion">
+  <input type="checkbox" name="collapse2" id="preview1" tabIndex="0" />
+  <div className="handle" >
+    <label htmlFor="preview1">source code</label>
   </div>
-  <div class="content">
+  <div className="content">
     <Source code={`
 <DateRenderer value={new Date()} />
 <DateRenderer value={new Date()} locale="en-EN"/>
@@ -136,12 +136,12 @@ import banner from '../../docs/johannes-plenio-2QUvkQTBh5s-unsplash.jpg';
     <TimeRenderer value={new Date("2024-10-06T19:40:55.221Z")} pure /><br />
     <TimeRenderer value={new Date()} locale="en-EN"/><br />
 </div>
-<section class="accordion">
-  <input type="checkbox" name="collapse2" id="preview2" tabindex="0" />
-  <div class="handle" >
-    <label for="preview2">source code</label>
+<section className="accordion">
+  <input type="checkbox" name="collapse2" id="preview2" tabIndex="0" />
+  <div className="handle" >
+    <label htmlFor="preview2">source code</label>
   </div>
-  <div class="content">
+  <div className="content">
     <Source code={`
 <TimeRenderer value={new Date()} />
 <TimeRenderer value={new Date("2024-10-06T19:40:55.221Z")} pure />
@@ -160,12 +160,12 @@ import banner from '../../docs/johannes-plenio-2QUvkQTBh5s-unsplash.jpg';
     <DateTimeRenderer value={new Date()} locale="ja-JP" formatOptions={{ dateStyle: "full", timeStyle: "full" }}/><br />
     <DateTimeRenderer value={new Date()} formatOptions={{ dateStyle: "full", timeStyle: "short", timeZone: "Australia/Sydney", hour12: true, calendar: "persian" }} /><br />
 </div>
-<section class="accordion">
-  <input type="checkbox" name="collapse2" id="preview3" tabindex="0" />
-  <div class="handle" >
-    <label for="preview3">source code</label>
+<section className="accordion">
+  <input type="checkbox" name="collapse2" id="preview3" tabIndex="0" />
+  <div className="handle" >
+    <label htmlFor="preview3">source code</label>
   </div>
-  <div class="content">
+  <div className="content">
     <Source code={`
 <DateTimeRenderer value={new Date()} />
 <DateTimeRenderer value={new Date()} locale="en-EN" pure />
