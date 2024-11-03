@@ -1,0 +1,27 @@
+import { Canvas, Source, Meta, Story } from '@storybook/blocks';
+import { DateRenderer } from "./DateRenderer";
+import { TimeRenderer } from "./TimeRenderer";
+import { DateTimeRenderer } from "./DateTimeRenderer";
+import banner from '../../docs/johannes-plenio-2QUvkQTBh5s-unsplash.jpg';
+
+<Meta title='Test Coverage' name="Coverage" />
+
+<iframe 
+    id="jest"
+    src="coverage/lcov-report/index.html"
+    width={"100%"}
+    height={"100%"}
+/>
+
+<style>
+{`
+    .storybook-docs{
+        min-width: 100vw;
+    }
+    .sbdocs, sbdocs-content {
+        padding: 0px !important;
+        max-width: 100vw;
+        overflow: hidden;   
+    }
+`}
+</style>

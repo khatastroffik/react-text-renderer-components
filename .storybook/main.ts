@@ -27,7 +27,8 @@ const config: StorybookConfig = {
       disableSourcemaps: true,
       disableTreeShaking: false      
     }
-  }
+  },
+  staticDirs: ["../test-reports"]
 };
 
 export default config; 

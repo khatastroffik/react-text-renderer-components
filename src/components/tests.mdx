@@ -1,0 +1,40 @@
+import { Canvas, Source, Meta, Story } from '@storybook/blocks';
+import { DateRenderer } from "./DateRenderer";
+import { TimeRenderer } from "./TimeRenderer";
+import { DateTimeRenderer } from "./DateTimeRenderer";
+import banner from '../../docs/johannes-plenio-2QUvkQTBh5s-unsplash.jpg';
+
+<Meta title='Test Report' name="Tests" />
+
+<iframe 
+    id="jest"
+    src="jest/index.html"
+    onLoad={()=>{
+        window.document.getElementById('jest').contentWindow.document.getElementsByClassName('ant-layout-header')[0].style.display='none';
+        window.document.getElementById('jest').contentWindow.document.getElementsByClassName('ant-layout-footer')[0].style.display='none';
+    }}
+    width={"100%"}
+    height={"100%"}
+/>
+
+<style>
+{`
+    .storybook-docs{
+        min-width: 100vw;
+    }
+    .sbdocs, sbdocs-content {
+        padding: 0px !important;
+        max-width: 100vw;
+        overflow: hidden;   
+    }
+`}
+</style>
+
+{/* 
+window.document.getElementById('jest').contentWindow.document.getElementsByClassName('ant-layout-header')[0].remove();
+window.document.getElementById('jest').contentWindow.document.getElementsByClassName('ant-layout-header')[0].style.display='none';
+
+https://stackoverflow.com/questions/217776/how-to-apply-css-to-iframe
+https://stackoverflow.com/questions/583753/using-css-to-affect-div-style-inside-iframe 
+https://www.geeksforgeeks.org/how-to-apply-css-property-to-an-iframe/
+*/}

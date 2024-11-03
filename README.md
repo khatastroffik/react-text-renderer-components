@@ -18,6 +18,8 @@ e.g. to render the text corresponding to a `DateOfBirth` field (Date type) withi
 
 Overall [Storybook Documentation](https://khatastroffik.github.io/react-text-renderer-components) of this component library.
 
+The documentation includes a **test report** and a **test coverage**.
+
 ## Available renderer components
 
 - `DateRenderer` component ([Storybook &rarr; DateRenderer](https://khatastroffik.github.io/react-text-renderer-components/?path=/docs/components-daterenderer--daterenderer-documentation))
@@ -112,6 +114,7 @@ This design allows to avoid repetitions, reduce the size of the compiled code us
 
 - ⬛ migrate this todo list to the github issues
 - ✅ add storybook stories for each component
+- ✅ add test report and coverage to storybook documentation
 - ✅ add a github action in order to deploy the package to npm
 - ✅ add a github action in order to deploy the package as github package within the repository
 - ✅ add a github action in order to build and publish the storybook static page as github page of the repository
