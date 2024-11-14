@@ -20,7 +20,8 @@
     "test:ci": "jest --ci --noStackTrace --passWithNoTests -c jest.config.ci.ts",
     "storybook": "storybook dev -p 6006",
     "DISABLED-prebuild:storybook": "npm run test:generate-output",
-    "build:storybook": "storybook build --test"
+    "build:storybook": "storybook build --test",
+    "version": "standard-changelog -a -v && standard-changelog -o RELEASENOTE.md && git add CHANGELOG.md RELEASENOTE.md"
   },
   "repository": {
     "type": "git",
@@ -77,6 +78,7 @@
     "react-syntax-highlighter": "^15.5.0",
     "react-test-renderer": "^18.3.1",
     "rimraf": "^6.0.1",
+    "standard-changelog": "^6.0.0",
     "storybook": "^8.3.5",
     "ts-jest": "^29.2.5",
     "ts-node": "^10.9.2",

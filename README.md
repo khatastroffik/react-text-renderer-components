@@ -119,6 +119,7 @@ This design allows to avoid repetitions, reduce the size of the compiled code us
 - ✅ add a github action in order to deploy the package as github package within the repository
 - ✅ add a github action in order to build and publish the storybook static page as github page of the repository
 - ✅ provide an example for implementing custom components derived from the AbstractRenderer component
+- ✅ implement automatic changelog and release note creation 
 
 ## How to implement your own, custom "renderer" using this library?
 
