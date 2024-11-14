@@ -14,11 +14,17 @@ e.g. to render the text corresponding to a `DateOfBirth` field (Date type) withi
 ![GitHub Issues](https://img.shields.io/github/issues/khatastroffik/react-text-renderer-components)
 ![Package size (minified)](https://img.shields.io/bundlejs/size/%40khatastroffik%2Freact-text-renderer-components?label=Package%20size%20(minified))
 
-## Storybook Documentation
+## Storybook, Changelog and Release note Documentation
+
+### storybook
 
 Overall [Storybook Documentation](https://khatastroffik.github.io/react-text-renderer-components) of this component library.
 
-The documentation includes a **test report** and a **test coverage**.
+This documentation includes a **test report** and a **test coverage**.
+
+### Changelog and Release note
+
+Please read the [CHANGELOG](./CHANGELOG.md) (all changes since the beginning) and [RELEASENOTE](./RELEASENOTE.md) (what's new since the last version) documents according to your needs.
 
 ## Available renderer components
 
@@ -95,7 +101,7 @@ This design allows to avoid repetitions, reduce the size of the compiled code us
 
 ### Implement supplemental renderer components
 
-- ⬛ `CalendarWeekRenderer` component
+- ⬛ `WeekRenderer` component
 - ⬛ `QuarterRenderer` component
 - ⬛ `TextRenderer` component (with text manipulation like UpperCase, LowerCase, Replace...)
 - ⬛ `CurrencyRenderer` component
@@ -103,12 +109,18 @@ This design allows to avoid repetitions, reduce the size of the compiled code us
 
 ### Add "common" features to the AbstractRenderer
 
-- ⬛ `Tooltip` property
+- ⬛ `tooltip` property
 - ⬛ `className` property - for spanned text
 - ⬛ `style`property - for spanned text
 - ⬛ `ellipsis` css formating - for spanned text
 - ⬛ `Aria` related properties - for spanned text
 - ⬛ Validate and sanitize/escape the generated/formated stringc prior rendition for Custom Text Renderer classes.
+
+### Improvements
+
+- ⬛ cache usage of `Intl.DateTimeFormat(..)` within the Date based renderers
+- ⬛ add a `timezone` property to the Date based renderers
+- ⬛ document "UTC" requirement on Date values
 
 ### project enhancements
 
@@ -281,4 +293,6 @@ npm install -D jest @testing-library/react ts-jest @types/jest ts-node @testing-
 
 - https://www.pluralsight.com/resources/blog/guides/how-to-return-plain-text-from-a-react-component
 - https://www.30secondsofcode.org/js/s/day-week-month-quarter-of-year/
-
+- https://weeknumber.com/how-to/javascript
+- https://weeknumber.com/how-to/iso-week-numbers
+- https://www.calendar-week.org/calendar-weeks/2026
