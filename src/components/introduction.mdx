@@ -127,6 +127,7 @@ import banner from '../../docs/johannes-plenio-2QUvkQTBh5s-unsplash.jpg';
 <DateRenderer value={new Date()} locale="ja-JP" pure />
     `} dark />
   </div>
+  <p>Note: the Date value passed as property to the DateRenderer component should be a **UTC** date</p>
 </section>
 
 ### TimeRenderer
@@ -148,6 +149,7 @@ import banner from '../../docs/johannes-plenio-2QUvkQTBh5s-unsplash.jpg';
 <TimeRenderer value={new Date()} locale="en-EN"/>
     `} dark />
   </div>
+  <p>Note: the Date value passed as property to the TimeRenderer component should be a **UTC** date</p>
 </section>
 
 ### DateTimeRenderer
@@ -176,6 +178,7 @@ import banner from '../../docs/johannes-plenio-2QUvkQTBh5s-unsplash.jpg';
 <DateTimeRenderer value={new Date()} formatOptions={{ dateStyle: "full", timeStyle: "short", timeZone: "Australia/Sydney", hour12: true, calendar: "persian" }} />
     `} dark />
   </div>
+  <p>Note: the Date value passed as property to the DateTimeRenderer component should be a **UTC** date</p>
 </section>
 
 <hr />
