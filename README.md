@@ -118,9 +118,10 @@ This design allows to avoid repetitions, reduce the size of the compiled code us
 
 ### Improvements
 
-- ⬛ cache usage of `Intl.DateTimeFormat(..)` within the Date based renderers
-- ⬛ add a `timezone` property to the Date based renderers
-- ⬛ document "UTC" requirement on Date values
+- ✅ cache usage of `Intl.DateTimeFormat(..)` within the Date based renderers
+- ✅ add a `timeZone` property to the Date based renderers
+- ✅ document "UTC" requirement on Date values
+- ⬛ Add `numberingSystem` option to WeekRenderer component (`01/2026` is `༠༡/༢༠༢༦` using *Tibetan* digits &rarr; siehe [standard Unicode numeral systems](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/getNumberingSystems#supported_numbering_system_types))
 
 ### project enhancements
 
@@ -296,3 +297,5 @@ npm install -D jest @testing-library/react ts-jest @types/jest ts-node @testing-
 - https://weeknumber.com/how-to/javascript
 - https://weeknumber.com/how-to/iso-week-numbers
 - https://www.calendar-week.org/calendar-weeks/2026
+- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat#syntax
+- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/getNumberingSystems#supported_numbering_system_types
