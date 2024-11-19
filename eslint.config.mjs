@@ -6,7 +6,16 @@ import typescriptParser from "@typescript-eslint/parser";
 
 export default [
   {
-    ignores: ["dist/**/*", ".husky/**/*", ".parcel-cache/**/*", "src/**/*.{js,jsx}", "coverage/**/*"]
+    ignores: [
+      "dist/**/*",
+      ".husky/**/*",
+      ".parcel-cache/**/*",
+      "src/**/*.{js,jsx}",
+      "test-reports/**/*",
+      "node_modules/**/*",
+      ".git/**/*",
+      "storybook-static/**/*"
+    ]
   },
   {
     settings: { react: { "version": "detect" } }
