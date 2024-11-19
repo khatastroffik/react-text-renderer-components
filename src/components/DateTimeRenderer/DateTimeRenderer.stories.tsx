@@ -13,11 +13,7 @@ const meta = {
   argTypes: {
     value: {
       control: "date",
-      description: "The **value** from which the *date* part should be rendered.",
-    },
-    formatOptions: {
-      control: "object", // "Intl.DateTimeFormatOptions",
-      description: "The (optional) **format options** is used to shape the displayed date and time parts.",
+      description: "The **value** from which the *date* part should be rendered (note: the Storybook control is automatically *localized* using the client system locale).",
     },
     pure: {
       control: "boolean",
@@ -27,6 +23,10 @@ const meta = {
       control: "select",
       description: "**locale** is used to format the date to a localized string. By default, this property is not defined/set and the DateTimeRenderer component uses the system setting.",
       options: ["en-EN", "de-DE", "fr-FR", "it-IT", "ja-JP"],
+    },
+    formatOptions: {
+      control: "object", // "Intl.DateTimeFormatOptions",
+      description: "The (optional) **format options** is used to shape the displayed date and time parts.",
     }
   },
   parameters: {

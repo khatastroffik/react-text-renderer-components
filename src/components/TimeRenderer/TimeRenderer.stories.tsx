@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { TimeRenderer } from './TimeRenderer';
-import { RemoveKeyAttribute } from "../../../.storybook/utils";
+import { RemoveKeyAttribute, timeZoneLabels, timeZoneMappings, timeZoneOptions } from "../../../.storybook/utils";
 
 const testdate = new Date("2024-10-06T19:40:55.221Z");
 
@@ -13,7 +13,7 @@ const meta = {
   argTypes: {
     value: {
       control: "date",
-      description: "The **value** from which the *time* part should be rendered.",
+      description: "The **value** from which the *time* part should be rendered (note: the Storybook control is automatically *localized* using the client system locale).",
     },
     pure: {
       control: "boolean",
@@ -23,6 +23,12 @@ const meta = {
       control: "select",
       description: "**locale** is used to format the date to a localized string. By default, this property is not defined/set and the TimeRenderer component uses the system setting.",
       options: ["en-EN", "de-DE", "fr-FR", "it-IT", "ja-JP"],
+    },
+    timeZone: {
+      control: { type: "select", labels: timeZoneLabels, },
+      description: "**timeZone** is used to calculate the UTC date for a given timeZone. By default, this property is not defined/set and the TimeRenderer component uses the system setting.",
+      options: timeZoneOptions,
+      mapping: timeZoneMappings
     }
   },
   parameters: {
@@ -42,7 +48,7 @@ type Story = StoryObj<typeof meta>;
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 function RenderTimeRenderer(args) {
-  if (typeof args.value == 'number') args.value = new Date(args.value); 
+  if (typeof args.value == 'number') args.value = new Date(args.value);
   return <TimeRenderer key={Math.random()} {...args} />
 }
 
@@ -51,7 +57,7 @@ function RenderTimeRenderer(args) {
 export const Playground = {
   name: "Playground",
   args: {
-    value: testdate, 
+    value: testdate,
     pure: false,
     locale: undefined
   },

@@ -20,7 +20,7 @@ e.g. to render the text corresponding to a `DateOfBirth` field (Date type) withi
 
 Overall [Storybook Documentation](https://khatastroffik.github.io/react-text-renderer-components) of this component library.
 
-This documentation includes a **test report** and a **test coverage**.
+This documentation includes a **test report** and a **coverage report**.
 
 ### Changelog and Release note
 
@@ -90,7 +90,7 @@ That's it!
 - parcel, react, typeScript
 - tsc, jest, eslint, husky, lint-staged, rimraf, storybook
 - class inheritance, modification of the type of an inherited react component property, DRY, SoC, localization, injection
-- commit message guideline, semantic versioning, test coverage
+- commit message guideline, semantic versioning, coverage report
 - github pages, github packages, npm package registry
 
 **Note:** *The "class inheritance" is intentionally used here*!
@@ -127,7 +127,7 @@ This design allows to avoid repetitions, reduce the size of the compiled code us
 
 - ⬛ migrate this todo list to the github issues
 - ✅ add storybook stories for each component
-- ✅ add test report and coverage to storybook documentation
+- ✅ add test report and coverage report to storybook documentation
 - ✅ add a github action in order to deploy the package to npm
 - ✅ add a github action in order to deploy the package as github package within the repository
 - ✅ add a github action in order to build and publish the storybook static page as github page of the repository
