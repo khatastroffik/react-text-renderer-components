@@ -2,6 +2,7 @@ import { Canvas, Source, Meta, Story } from '@storybook/blocks';
 import { DateRenderer } from "./DateRenderer";
 import { TimeRenderer } from "./TimeRenderer";
 import { DateTimeRenderer } from "./DateTimeRenderer";
+import { WeekRenderer } from "./WeekRenderer";
 import banner from '../../docs/johannes-plenio-2QUvkQTBh5s-unsplash.jpg';
 
 <style>
@@ -153,6 +154,7 @@ import banner from '../../docs/johannes-plenio-2QUvkQTBh5s-unsplash.jpg';
 </section>
 
 ### DateTimeRenderer
+
 <div className="previewoutput">
     <DateTimeRenderer value={new Date()} /><br />
     <DateTimeRenderer value={new Date()} locale="en-EN" pure /><br />
@@ -181,6 +183,42 @@ import banner from '../../docs/johannes-plenio-2QUvkQTBh5s-unsplash.jpg';
   <p>Note: the Date value passed as property to the DateTimeRenderer component should be a **UTC** date</p>
 </section>
 
+### WeekRenderer
+
+<div className="previewoutput">
+    <DateRenderer value={new Date()} /> &rarr; <WeekRenderer value={new Date()} /><br />
+    <DateRenderer value={new Date("2024-10-06T19:40:55.221Z")} /> &rarr; <WeekRenderer value={new Date("2024-10-06T19:40:55.221Z")} pure /><br />
+    <DateRenderer value={new Date("2025-12-29T11:11:11.111Z")} /> &rarr; <WeekRenderer value={new Date("2025-12-29T11:11:11.111Z")} displayYear pure /><br />
+    <DateRenderer value={new Date("2024-12-30T11:11:11.111Z")} /> &rarr; <WeekRenderer value={new Date("2024-12-30T11:11:11.111Z")} pure /><br />
+    <DateRenderer value={new Date("2025-01-01T11:11:11.111Z")} /> &rarr; <WeekRenderer value={new Date("2025-01-01T11:11:11.111Z")} displayYear pure /><br />
+    <DateRenderer value={new Date("2025-01-01T11:11:11.111Z")} /> &rarr; <WeekRenderer value={new Date("2025-01-01T11:11:11.111Z")} displayYear numberingSystem="tibt" pure /><br />
+    <DateRenderer value={new Date("2026-12-28T11:11:11.111Z")} /> &rarr; <WeekRenderer value={new Date("2026-12-28T11:11:11.111Z")} displayYear pure /><br />
+    <DateRenderer value={new Date("2027-01-03T11:11:11.111Z")} /> &rarr; <WeekRenderer value={new Date("2027-01-03T11:11:11.111Z")} displayYear pure /><br />
+    <DateRenderer value={new Date("2027-01-04T11:11:11.111Z")} /> &rarr; <WeekRenderer value={new Date("2027-01-04T11:11:11.111Z")} displayYear pure /><br />
+    <DateRenderer value={new Date("2025-12-29T11:11:11.111Z")} /> &rarr; <WeekRenderer value={new Date("2025-12-29T11:11:11.111Z")} displayYear pure /><br />
+</div>
+<section className="accordion">
+  <input type="checkbox" name="collapse2" id="preview4" tabIndex="0" />
+  <div className="handle" >
+    <label htmlFor="preview4">source code</label>
+  </div>
+  <div className="content">
+    <Source code={`
+<WeekRenderer value={new Date()} />
+<WeekRenderer value={new Date("2024-10-06T19:40:55.221Z")} pure />
+<WeekRenderer value={new Date("2025-12-29T11:11:11.111Z")} displayYear pure />
+<WeekRenderer value={new Date("2024-12-30T11:11:11.111Z")} pure />
+<WeekRenderer value={new Date("2025-01-01T11:11:11.111Z")} displayYear pure />
+<WeekRenderer value={new Date("2025-01-01T11:11:11.111Z")} displayYear numberingSystem="tibt" pure />
+<WeekRenderer value={new Date("2026-12-28T11:11:11.111Z")} displayYear pure />
+<WeekRenderer value={new Date("2027-01-03T11:11:11.111Z")} displayYear pure />
+<WeekRenderer value={new Date("2027-01-04T11:11:11.111Z")} displayYear pure />
+<WeekRenderer value={new Date("2025-12-29T11:11:11.111Z")} displayYear pure />
+    `} dark />
+  </div>
+  <p>Note: the Date value passed as property to the TimeRenderer component should be a **UTC** date</p>
+</section>
+
 <hr />
 
 <div className="right">Visit the [Github Repository](https://github.com/khatastroffik/react-text-renderer-components)</div>
@@ -194,4 +232,5 @@ https://github.com/storybookjs/storybook/discussions/16503
 https://storybook.js.org/addons/@storybook/addon-docs
 https://egghead.io/lessons/react-add-a-welcome-page-with-sequential-stories-to-a-react-storybook 
 https://keithjgrant.com/posts/2023/04/transitioning-to-height-auto/
+https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 */}

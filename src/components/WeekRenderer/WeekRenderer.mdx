@@ -1,0 +1,36 @@
+import { Primary, Canvas, Source, Meta, ArgTypes, Description, Controls } from '@storybook/blocks';
+import * as WeekRendererStories from './WeekRenderer.stories';
+
+<Meta of={WeekRendererStories} name="WeekRenderer Documentation"  />
+
+# WeekRenderer
+
+<Description of={WeekRendererStories} />
+
+### Preview
+
+<Primary />
+
+### Properties
+
+The text representation can be customized using the appropriates tag attributes i.e. component properties, as described below.
+
+<Controls of={WeekRendererStories.Playground} />
+{/* <ArgTypes of={WeekRendererStories} sort="requiredFirst" /> */}
+
+Notes:
+
+- The values and options used/available within the "Control" column are for demonstration purpose only.
+- Use the "Reset controls" button on the top right side of the table in order to restore the initial demo values and options. Alternatively, you could reload the page.
+
+### Usage
+
+<Source dark type={"jsx"} code={`
+import { WeekRenderer } from 'react-text-renderer-components';
+
+const Example = () => {
+    return <WeekRenderer value={new Date()} />
+}`
+} />
+
+Back to the [Github Repository](https://github.com/khatastroffik/react-text-renderer-components)

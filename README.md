@@ -31,6 +31,7 @@ Please read the [CHANGELOG](./CHANGELOG.md) (all changes since the beginning) an
 - `DateRenderer` component ([Storybook &rarr; DateRenderer](https://khatastroffik.github.io/react-text-renderer-components/?path=/docs/components-daterenderer--daterenderer-documentation))
 - `TimeRenderer` component ([Storybook &rarr; TimeRenderer](https://khatastroffik.github.io/react-text-renderer-components/?path=/docs/components-timerenderer--timerenderer-documentation))
 - `DateTimeRenderer` component ([Storybook &rarr; DateTimeRenderer](https://khatastroffik.github.io/react-text-renderer-components/?path=/docs/components-datetimerenderer--datetimerenderer-documentation))
+- `WeekRenderer` component ([Storybook &rarr; WeekRenderer](https://khatastroffik.github.io/react-text-renderer-components/?path=/docs/components-weekrenderer--weekrenderer-documentation))
 
 more components to come... (see the ToDos below)
 
@@ -101,7 +102,7 @@ This design allows to avoid repetitions, reduce the size of the compiled code us
 
 ### Implement supplemental renderer components
 
-- ⬛ `WeekRenderer` component
+- ✅ `WeekRenderer` component
 - ⬛ `QuarterRenderer` component
 - ⬛ `TextRenderer` component (with text manipulation like UpperCase, LowerCase, Replace...)
 - ⬛ `CurrencyRenderer` component
