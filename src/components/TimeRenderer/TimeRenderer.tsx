@@ -13,8 +13,8 @@ const _TimeRendererCache: any = {};
 
 export class TimeRenderer extends AbstractRenderer<Date, ITimeRendererProps> {
     getFormatedText(): string {
-        const options = { ...defaultTimeRendererFormatOptions, ... this.props.timeZone && {timeZone: this.props.timeZone} };
-        const formater = this.value && getFromCache<Intl.DateTimeFormat>(_TimeRendererCache, Intl.DateTimeFormat, this.props.locale, options );
+        const options = { ...defaultTimeRendererFormatOptions, ... this.props.timeZone && { timeZone: this.props.timeZone } };
+        const formater = this.value && getFromCache<Intl.DateTimeFormat>(_TimeRendererCache, Intl.DateTimeFormat, this.props.locale, options);
         return this.value ? formater.format(this.value) : "";
         // return this.value ? new Intl.DateTimeFormat(this.props.locale, options).format(this.value) : "";
     }

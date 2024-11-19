@@ -22,6 +22,12 @@ describe("TimeRenderer component", () => {
         expect(r.container.innerHTML).toEqual("");
     });
 
+    it("should render a date value to a pure localized time string corresponding to the given timezone", () => {
+        const r = render(<TimeRenderer value={dateValue} timeZone="America/Lima" pure />);
+        const automaticallyLocalizedTimeString = new Intl.DateTimeFormat(undefined, { ...defaultTimeRendererFormatOptions, timeZone: "America/Lima" }).format(dateValue);
+        expect(r.container.innerHTML).toEqual(automaticallyLocalizedTimeString);
+    });
+
     it("protected method 'getFormatedText()' should return a localized time string", () => {
         class TimeRendererWrapper extends TimeRenderer {
             public getFormatedText() {

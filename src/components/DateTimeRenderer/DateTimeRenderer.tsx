@@ -18,7 +18,7 @@ const _DateTimeRendererCache: any = {};
 export class DateTimeRenderer extends AbstractRenderer<Date, IDateTimeRendererProps> {
     protected getFormatedText(): string {
         const options = this.props.formatOptions ?? defaultDateTimeRendererFormatOptions;
-        const formater = this.value && getFromCache<Intl.DateTimeFormat>(_DateTimeRendererCache, Intl.DateTimeFormat, this.props.locale, options );
+        const formater = this.value && getFromCache<Intl.DateTimeFormat>(_DateTimeRendererCache, Intl.DateTimeFormat, this.props.locale, options);
         return this.value ? formater.format(this.value) : "";
         // return this.value ? new Intl.DateTimeFormat(this.props.locale, options).format(this.value) : "";
     }
