@@ -122,7 +122,7 @@ This design allows to avoid repetitions, reduce the size of the compiled code us
 - ✅ cache usage of `Intl.DateTimeFormat(..)` within the Date based renderers
 - ✅ add a `timeZone` property to the Date based renderers
 - ✅ document "UTC" requirement on Date values
-- ⬛ Add `numberingSystem` option to WeekRenderer component (`01/2026` is `༠༡/༢༠༢༦` using *Tibetan* digits &rarr; siehe [standard Unicode numeral systems](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/getNumberingSystems#supported_numbering_system_types))
+- ✅ Add `numberingSystem` option to WeekRenderer component (`01/2026` is `༠༡/༢༠༢༦` using *Tibetan* digits &rarr; siehe [standard Unicode numeral systems](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/getNumberingSystems#supported_numbering_system_types))
 
 ### project enhancements
 
@@ -280,7 +280,7 @@ npm install -D jest @testing-library/react ts-jest @types/jest ts-node @testing-
 - https://storybook.js.org/addons/storybook-addon-storyout
 - https://storybook.js.org/addons/@storybook/addon-console
 
-### Shiel.io
+### Shields.io
 
 - https://shields.io/badges/git-hub-actions-workflow-status
 - https://shields.io/badges/git-hub-issues-or-pull-requests
