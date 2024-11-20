@@ -12,3 +12,5 @@
 * add the NEW component "WeekRenderer" to render ISO week numbers ([a968aa7](https://github.com/khatastroffik/react-text-renderer-components/commit/a968aa7d20b34f7180f466ff77e92ea1ec8095e3))
 
 
+
+

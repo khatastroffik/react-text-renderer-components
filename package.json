@@ -21,7 +21,7 @@
     "storybook": "storybook dev -p 6006",
     "DISABLED-prebuild:storybook": "npm run test:generate-output",
     "build:storybook": "storybook build --test",
-    "version": "standard-changelog -a -v && standard-changelog -o RELEASENOTE.md && git add CHANGELOG.md RELEASENOTE.md"
+    "version": "rimraf CHANGELOG.md RELEASENOTE.md && standard-changelog -r 1 -o RELEASENOTE.md && standard-changelog -f && git add CHANGELOG.md RELEASENOTE.md"
   },
   "repository": {
     "type": "git",
