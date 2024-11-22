@@ -13,7 +13,7 @@ const meta = {
   argTypes: {
     value: {
       control: "date",
-      description: "The **value** from which the *date* part should be rendered.",
+      description: "The **value** from which the ISO week number should be rendered.",
     },
     pure: {
       control: "boolean",

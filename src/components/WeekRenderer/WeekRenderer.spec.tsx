@@ -36,7 +36,7 @@ describe("WeekRenderer component", () => {
     });
 
 
-    it("should render a week number of a date value to a pure specifically localized string with year of the week", () => {
+    it("should render a week number of a date value to a pure localized string suffixed with the year of the week number", () => {
         const r = render(<WeekRenderer value={dateValue} displayYear pure />);
         const x = calcISOWeek(dateValue);
         const formatter = new Intl.NumberFormat(undefined, defaultWeekRendererFormatOptions);
