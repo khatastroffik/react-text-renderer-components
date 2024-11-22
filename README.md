@@ -1,10 +1,8 @@
-
-
 # react-text-renderer-components
 
 ! MANAGE YOUR DATA, NOT THEIR STRING REPRESENTATION !
 
-This is a zero-dependencies component library providing a set of (pure) text rendering utility components. Those components are accepting common and custom data/field types as input and are rendering their text representation *automatically*.
+This is a zero-dependencies component library providing a set of (pure) text rendering utility components. Those components are accepting common and custom data/field types as input and are rendering their text representation _automatically_.
 
 e.g. to render the text corresponding to a `DateOfBirth` field (Date type) within an html-table cell, use a simple `<td><DateRenderer value={person.DateOfBirth} /></td>` statement.
 
@@ -12,7 +10,7 @@ e.g. to render the text corresponding to a `DateOfBirth` field (Date type) withi
 ![License](https://img.shields.io/github/license/khatastroffik/react-text-renderer-components?label=License)
 ![Package Build](https://img.shields.io/github/actions/workflow/status/khatastroffik/react-text-renderer-components/.github%2Fworkflows%2Fnpm-publish-github-packages.yml?branch=main&label=Package%20Build)
 ![GitHub Issues](https://img.shields.io/github/issues/khatastroffik/react-text-renderer-components)
-![Package size (minified)](https://img.shields.io/bundlejs/size/%40khatastroffik%2Freact-text-renderer-components?label=Package%20size%20(minified))
+![Package size (minified)](<https://img.shields.io/bundlejs/size/%40khatastroffik%2Freact-text-renderer-components?label=Package%20size%20(minified)>)
 
 ## Storybook, Changelog and Release note Documentation
 
@@ -39,11 +37,11 @@ more components to come... (see the ToDos below)
 
 - typesafe handling of input values = use your own input value types!
 - text formating is implemented within the text-renderer react components
-- (automatic) rendering of Date, Time and DateTime (w/ optional custom format) *localized* text representations
-- render formated text as-is i.e. as "*pure*" text (e.g.  `new Date("06.10.2024")` rendered as `06.10.2024`) or
+- (automatic) rendering of Date, Time and DateTime (w/ optional custom format) _localized_ text representations
+- render formated text as-is i.e. as "_pure_" text (e.g. `new Date("06.10.2024")` rendered as `06.10.2024`) or
 - render formated text within a `<span></span>` tag (e.g. `new Date("06.10.2024")` rendered as `<span>06.10.2024</span>`)
-- implement *your own (reusable) Text Renderer components* easily (see below)
-- efficient and type safe formating of *Date* values using the `Intl.DateTimeFormat(..)` (see "Notes on formating DateTime values" below)
+- implement _your own (reusable) Text Renderer components_ easily (see below)
+- efficient and type safe formating of _Date_ values using the `Intl.DateTimeFormat(..)` (see "Notes on formating DateTime values" below)
 - define once, reuse everywhere
 - use the CustomRenderer component to render any type of data using a simple 'mutation' function of your own (not implemented yet).
 
@@ -51,7 +49,7 @@ more features to come (see the ToDos below)
 
 ## Installation
 
-The package containing the Text Renderer Components will be available for installation using *either* the [NPM package registry](https://www.npmjs.com/search?q=react-text-renderer-components) *or* the Github Packages as registered directly within the Github repository of the library.
+The package containing the Text Renderer Components will be available for installation using _either_ the [NPM package registry](https://www.npmjs.com/search?q=react-text-renderer-components) _or_ the Github Packages as registered directly within the Github repository of the library.
 
 ### install from the "npm registry"
 
@@ -59,21 +57,23 @@ You may use any package manager cli such as "npm" or "yarn" in order to download
 
 1. From the root folder of your project (containing the `package.json` file of the project), run the following command within any suitable shell (powershell, bash...):
 
-    ```shell
-    npm install react-text-renderer-components
+   ```shell
+   npm install react-text-renderer-components
 
-    # or 
+   # or
 
-    yarn install react-text-renderer-components
-    ```
+   yarn install react-text-renderer-components
+   ```
+
 1. import any component you'd like to use and insert the corresponding tag and options into your rendering procedure:
-    ```jsx
-    import { DateRenderer } from '@khatastroffik/react-text-renderer-components';
 
-    export const Today = () => {
-        return <DateRenderer value={new Date()} />
-    }
-    ```
+   ```jsx
+   import { DateRenderer } from "@khatastroffik/react-text-renderer-components";
+
+   export const Today = () => {
+     return <DateRenderer value={new Date()} />;
+   };
+   ```
 
 That's it!
 
@@ -82,7 +82,7 @@ That's it!
 ## Tech Stack
 
 ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?logo=typescript&logoColor=white)
-![React Version (Peer Dependency)](https://img.shields.io/github/package-json/dependency-version/khatastroffik/react-text-renderer-components/peer/react?label=React%20(Peer%20Dependency)&logo=react&logoColor=%2361DAFB&labelColor=%2320232a)
+![React Version (Peer Dependency)](<https://img.shields.io/github/package-json/dependency-version/khatastroffik/react-text-renderer-components/peer/react?label=React%20(Peer%20Dependency)&logo=react&logoColor=%2361DAFB&labelColor=%2320232a>)
 ![ESLint](https://img.shields.io/badge/ESLint-4B3263?logo=eslint&logoColor=white)
 ![Jest](https://img.shields.io/badge/-jest-%23C21325?logo=jest&logoColor=white)
 [![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?logo=github-actions&logoColor=white)](#)
@@ -94,7 +94,7 @@ That's it!
 - commit message guideline, semantic versioning, coverage report
 - github pages, github packages, npm package registry
 
-**Note:** *The "class inheritance" is intentionally used here*!
+**Note:** _The "class inheritance" is intentionally used here_!
 
 This design allows to avoid repetitions, reduce the size of the compiled code using this library, ease maintenance of the components. It also simplify type checking (potentially complex) data/value types and separate the user interface from the "business logic" of the different renderer classes etc. It also permit to validate/sanitize/escape the rendered text centraly, regardless of the implemented Text Renderer classes.
 
@@ -103,7 +103,7 @@ This design allows to avoid repetitions, reduce the size of the compiled code us
 ### Implement supplemental renderer components
 
 - ✅ `WeekRenderer` component
-- ⬛ `QuarterRenderer` component
+- ✅ `QuarterRenderer` component
 - ⬛ `TextRenderer` component (with text manipulation like UpperCase, LowerCase, Replace...)
 - ⬛ `CurrencyRenderer` component
 - ⬛ `CustomRenderer` component i.e the text formating function may be provided from the parent application/component using the CustomRenderer.
@@ -122,7 +122,9 @@ This design allows to avoid repetitions, reduce the size of the compiled code us
 - ✅ cache usage of `Intl.DateTimeFormat(..)` within the Date based renderers
 - ✅ add a `timeZone` property to the Date based renderers
 - ✅ document "UTC" requirement on Date values
-- ✅ Add `numberingSystem` option to WeekRenderer component (`01/2026` is `༠༡/༢༠༢༦` using *Tibetan* digits &rarr; siehe [standard Unicode numeral systems](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/getNumberingSystems#supported_numbering_system_types))
+- ✅ Add `numberingSystem` option to WeekRenderer component (`01/2026` is `༠༡/༢༠༢༦` using _Tibetan_ digits &rarr; see [standard Unicode numeral systems](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/getNumberingSystems#supported_numbering_system_types))
+- ⬛ Add an option to display ISO week numbers and quarter number as "ordinal numbers" (referring to the ordering or ranking of things, e.g. "1st", "2nd", "3rd" in English) &rarr;
+  see [Plural Rules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules/PluralRules)
 
 ### project enhancements
 
@@ -133,12 +135,12 @@ This design allows to avoid repetitions, reduce the size of the compiled code us
 - ✅ add a github action in order to deploy the package as github package within the repository
 - ✅ add a github action in order to build and publish the storybook static page as github page of the repository
 - ✅ provide an example for implementing custom components derived from the AbstractRenderer component
-- ✅ implement automatic changelog and release note creation 
+- ✅ implement automatic changelog and release note creation
 
 ## How to implement your own, custom "renderer" using this library?
 
 it is very easy to implement new classes derived from the `AbstractRenderer` class:
- 
+
 - such derived classes just need to provide an implementation of the abstract `getFormatedText(): string` method.
 - Optionally, the type of the input `value` property (default to string) can be set/defined using a simplistic interface declaration.
 - Furthermore, you may define additional properties for the derived react component.
@@ -151,27 +153,27 @@ A class as simple as:
 
 ```tsx
 export class SpecialRenderer extends AbstractRenderer {
-    protected getFormatedText(): string {       
-        return this.value ? `&rArr; ${this.value} &lArr;` : "n/a";
-    }
+  protected getFormatedText(): string {
+    return this.value ? `&rArr; ${this.value} &lArr;` : "n/a";
+  }
 }
- ```
+```
 
 may be used per
 
- ```html
- <SpecialRenderer value="Dramatic-Weasel" />
- <SpecialRenderer value="Gentle-Breakdown" pure />
- <SpecialRenderer value="" />
- ```
+```html
+<SpecialRenderer value="Dramatic-Weasel" />
+<SpecialRenderer value="Gentle-Breakdown" pure />
+<SpecialRenderer value="" />
+```
 
- and would output
+and would output
 
- ```html
- <span>&rArr; Dramatic-Weasel &lArr;</span>
- &rArr; Gentle-Breakdown &lArr;
- <span>n/a</span>
- ```
+```html
+<span>&rArr; Dramatic-Weasel &lArr;</span>
+&rArr; Gentle-Breakdown &lArr;
+<span>n/a</span>
+```
 
 ### use case #2: defining a custom type for the input value property
 
@@ -182,8 +184,8 @@ import { AbstractRenderer, IAbstractRendererProps, ModifyValueType } from "./Abs
 
 // 1) define your custom data type
 export interface Person {
-    name: string;
-    email: number;
+  name: string;
+  email: number;
 }
 
 // 2) override the default (string) type of the "value" property defined within the AbstractRenderer
@@ -191,9 +193,9 @@ export type IPersonRendererProps = ModifyValueType<IAbstractRendererProps, { val
 
 // 3) define a custom rendere class using the specific data type and the custom property type as defined above
 export class PersonRenderer extends AbstractRenderer<Person, IPersonRendererProps> {
-    protected getFormatedText(): string {
-        return this.value ? `${this.value.name} (${this.value.email})` : "";
-    }
+  protected getFormatedText(): string {
+    return this.value ? `${this.value.name} (${this.value.email})` : "";
+  }
 }
 ```
 
@@ -203,14 +205,14 @@ To enhance the properties of the renderer class i.e to add properties to be pass
 
 ```typescript
 export interface IIconizedRendererProps extends IAbstractRendererProps {
-    icon: string;
+  icon: string;
 }
 
 export class IconizedRenderer extends AbstractRenderer<string, IIconizedRendererProps> {
-    protected getFormatedText(): string {
-        // do whatever you like with the additional property
-        return this.value ?? this.icon;
-    }
+  protected getFormatedText(): string {
+    // do whatever you like with the additional property
+    return this.value ?? this.icon;
+  }
 }
 ```
 
@@ -245,7 +247,7 @@ A standard approach consists in calling one of the formating methodes of the `Da
 
 There's a potential **negative impact** of using this approach when dealing with large amount of data i.e. a lot of "to-be-formated" date values, as stated in the [MSDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString) documentation:
 
-> Every time toLocaleString is called, it has to perform a search in a big database of localization strings, which is *potentially inefficient*. When the method is called many times with the same arguments, it is better to create a Intl.DateTimeFormat object and use its format() method, because a DateTimeFormat object remembers the arguments passed to it and may decide to cache a slice of the database, so future format calls can search for localization strings within a more constrained context.
+> Every time toLocaleString is called, it has to perform a search in a big database of localization strings, which is _potentially inefficient_. When the method is called many times with the same arguments, it is better to create a Intl.DateTimeFormat object and use its format() method, because a DateTimeFormat object remembers the arguments passed to it and may decide to cache a slice of the database, so future format calls can search for localization strings within a more constrained context.
 
 Hence, this library is using the `DateTimeFormat` object and its `format()`method to generate localized and formated output (according to the renderer component properties) as per:
 
