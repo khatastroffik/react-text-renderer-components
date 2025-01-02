@@ -12,9 +12,9 @@ e.g. to render the text corresponding to a `DateOfBirth` field (Date type) withi
 ![GitHub Issues](https://img.shields.io/github/issues/khatastroffik/react-text-renderer-components)
 ![Package size (minified)](<https://img.shields.io/bundlejs/size/%40khatastroffik%2Freact-text-renderer-components?label=Package%20size%20(minified)>)
 
-## Storybook, Changelog and Release note Documentation
+## Documentation: Storybook, Changelog and Release note
 
-### storybook
+### Storybook documentation
 
 Overall [Storybook Documentation](https://khatastroffik.github.io/react-text-renderer-components) of this component library.
 
@@ -30,6 +30,7 @@ Please read the [CHANGELOG](./CHANGELOG.md) (all changes since the beginning) an
 - `TimeRenderer` component ([Storybook &rarr; TimeRenderer](https://khatastroffik.github.io/react-text-renderer-components/?path=/docs/components-timerenderer--timerenderer-documentation))
 - `DateTimeRenderer` component ([Storybook &rarr; DateTimeRenderer](https://khatastroffik.github.io/react-text-renderer-components/?path=/docs/components-datetimerenderer--datetimerenderer-documentation))
 - `WeekRenderer` component ([Storybook &rarr; WeekRenderer](https://khatastroffik.github.io/react-text-renderer-components/?path=/docs/components-weekrenderer--weekrenderer-documentation))
+- `QuarterRenderer` component ([Storybook &rarr; QuarterRenderer](https://khatastroffik.github.io/react-text-renderer-components/?path=/docs/components-quarterrenderer--quarterrenderer-documentation))
 
 more components to come... (see the ToDos below)
 
