@@ -4,11 +4,12 @@ import { render, screen } from '@testing-library/react';
 
 class AbstractRendererWrapper extends AbstractRenderer {
     getFormatedText(): string {
-        return this.props.value;
+        return this.props.value as string;
     }
 }
 
 describe("AbstractRenderer component", () => {
+    
     it("should render a pure text", () => {
         render(<AbstractRendererWrapper value="TEST" pure />);
         const e = screen.getByText("TEST");

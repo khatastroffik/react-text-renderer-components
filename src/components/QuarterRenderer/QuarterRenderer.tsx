@@ -1,27 +1,21 @@
-import { getFromCache } from "../../shared/CacheManager";
-import { AbstractRenderer, IAbstractRendererProps, ModifyValueType } from "../AbstractRenderer";
+import { DateTimeFormatCache, getFromCache, NumberFormatCache } from "../../shared/CacheManager";
+import { AbstractRenderer, IAbstractRendererProps, IDateValue, ModifyValueType } from "../AbstractRenderer";
 
 export const defaultQuarterFormatOptions: Intl.NumberFormatOptions = { minimumIntegerDigits: 1 };
 export const defaultYearFormatOptions: Intl.DateTimeFormatOptions = { year: "numeric" };
 
-interface QuarterRendererValue {
-    value: Date;
-}
-
-export interface IQuarterRendererProps extends ModifyValueType<IAbstractRendererProps, QuarterRendererValue> {
+export interface IQuarterRendererProps extends ModifyValueType<IAbstractRendererProps, IDateValue> {
     displayYear?: boolean;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const _QuarterRendererCache: any = {}, _YearRendererCache: any = {};
+const _QuarterFormatterCache: NumberFormatCache = {};
+const _YearFormatterCache: DateTimeFormatCache = {};
 
 export class QuarterRenderer extends AbstractRenderer<Date, IQuarterRendererProps> {
     protected getFormatedText(): string {
         if (this.value) {
-            const quarterOptions = { ...defaultQuarterFormatOptions };
-            const quarterFormatter = getFromCache<Intl.NumberFormat>(_QuarterRendererCache, Intl.NumberFormat, undefined, quarterOptions);
-            const yearOptions = { ...defaultYearFormatOptions };
-            const yearFormatter = getFromCache<Intl.DateTimeFormat>(_YearRendererCache, Intl.DateTimeFormat, undefined, yearOptions);
+            const quarterFormatter = getFromCache<Intl.NumberFormat>(_QuarterFormatterCache, Intl.NumberFormat, undefined, defaultQuarterFormatOptions);
+            const yearFormatter = getFromCache<Intl.DateTimeFormat>(_YearFormatterCache, Intl.DateTimeFormat, undefined, defaultYearFormatOptions);
             return quarterFormatter.format(calcQuarter(this.value)) + (this.props.displayYear ? "/" + yearFormatter.format(this.value) : "");
         } else {
             return "";

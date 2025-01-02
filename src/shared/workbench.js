@@ -24,12 +24,22 @@ function calcYearOfISOCalendarWeek(inputDate) {
     return purifiedDate.getFullYear();
 }
 
+// ~~~~~ WEEK RENDERER ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 // const formatter = new Intl.NumberFormat(undefined, {minimumIntegerDigits:2, useGrouping: false, numberingSystem: "tibt"});
 // const formatter = new Intl.NumberFormat(undefined, {minimumIntegerDigits:1, useGrouping: false, numberingSystem: "hanidec"});
 const formatter = new Intl.NumberFormat(undefined, { minimumIntegerDigits: 2, useGrouping: false });
 const x = calcISOWeek(new Date("2025-12-29T11:11:11.111Z"));
 console.log(`[${new Date("2025-12-29T11:11:11.111Z").toLocaleDateString()}] KW ${formatter.format(x.week)}/${formatter.format(x.year)}`);
 
+
+// ~~~~~ QUARTER RENDERER ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+function calcQuarter(inputDate){ return Math.floor(1 + inputDate.getMonth() / 3) }
+const d = new Date("2025-12-29T11:11:11.111Z");
+const quarterFormatter = new Intl.NumberFormat(undefined, { minimumIntegerDigits: 1 });
+const yearFormatter = new Intl.DateTimeFormat(undefined, { year: "numeric" });
+console.log(`[${new Date("2025-12-29T11:11:11.111Z").toLocaleDateString()}] Q ${quarterFormatter.format(calcQuarter(d))}/${yearFormatter.format(d)}`);
 
 
 

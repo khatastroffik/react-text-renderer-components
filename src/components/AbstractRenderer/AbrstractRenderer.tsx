@@ -2,13 +2,12 @@ import React from 'react';
 
 export type ModifyValueType<T, R> = Omit<T, keyof R> & R;
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type IRendererValueType = any;
-
 export interface IAbstractRendererProps {
-    value: IRendererValueType;
+    value: unknown;
     pure?: boolean;
 }
+
+export interface IDateValue { value: Date }
 
 export abstract class AbstractRenderer<IRendererValueType = string, IRendererProps extends IAbstractRendererProps = IAbstractRendererProps> extends React.Component<IRendererProps> {
 
@@ -17,8 +16,8 @@ export abstract class AbstractRenderer<IRendererValueType = string, IRendererPro
 
     constructor(props: IRendererProps) {
         super(props);
-        this.value = this.props.value
-        this.pure = this.props["pure"] ?? false;
+        this.value = this.props.value as IRendererValueType;
+        this.pure = !!this.props["pure"];
     }
 
     protected abstract getFormatedText(): string;
@@ -27,7 +26,7 @@ export abstract class AbstractRenderer<IRendererValueType = string, IRendererPro
         const textToDisplay = this.getFormatedText();
         if (this.pure) {
             return (<>{textToDisplay}</>)
-        } else
-            return (<span>{textToDisplay}</span>);
+        }
+        return (<span>{textToDisplay}</span>);
     }
 }

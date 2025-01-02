@@ -1,34 +1,31 @@
-import { AbstractRenderer, IAbstractRendererProps, ModifyValueType } from "../AbstractRenderer";
-
+import { getFromCache, NumberFormatCache } from '../../shared/CacheManager';
+import { AbstractRenderer, IAbstractRendererProps, IDateValue, ModifyValueType } from "../AbstractRenderer";
 
 export const defaultWeekRendererFormatOptions: Intl.NumberFormatOptions = { minimumIntegerDigits: 2, useGrouping: false };
-
-interface WeekRendererValue {
-    value: Date;
-}
 
 type ISOWeek = {
     week: number;
     year: number;
 }
 
-export interface IWeekRendererProps extends ModifyValueType<IAbstractRendererProps, WeekRendererValue> {
+export interface IWeekRendererProps extends ModifyValueType<IAbstractRendererProps, IDateValue> {
     minimumIntegerDigits?: 1 | 2;
     displayYear?: boolean;
     numberingSystem?: string;
 }
 
+const _WeekFormatterCache: NumberFormatCache = {};
+
 export class WeekRenderer extends AbstractRenderer<Date, IWeekRendererProps> {
     protected getFormatedText(): string {
         if (this.value) {
-
             const options = {
                 ...defaultWeekRendererFormatOptions,
                 ... this.props.minimumIntegerDigits && { minimumIntegerDigits: this.props.minimumIntegerDigits },
                 ... this.props.numberingSystem && { numberingSystem: this.props.numberingSystem }
             };
             const isoWeek = calcISOWeek(this.value);
-            const formatter = new Intl.NumberFormat(undefined, options);
+            const formatter = getFromCache<Intl.NumberFormat>(_WeekFormatterCache, Intl.NumberFormat, undefined, options);
             return formatter.format(isoWeek.week) + (this.props.displayYear ? "/" + formatter.format(isoWeek.year) : "");
         } else {
             return "";

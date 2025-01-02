@@ -21,6 +21,7 @@ function factory<T>(ctor: Ctor<T>, ...args: any[]): T {
 /**
  * Retrieve an instance of a given object type (identified by a unique key) from a dedicated cache.
  * If the instance does not already exist, it will be automatically created and added to the cache.
+ * USAGE:the (order of the) passed ctorParams MUST comply with the specific constructor definition.
  * 
  * @param cache The storage object containing the cached object instances
  * @param ctor The type of object to be stored in the cache
@@ -28,6 +29,7 @@ function factory<T>(ctor: Ctor<T>, ...args: any[]): T {
  * corresponding instance does not already exist i.e. is not already cached.
  * Important: the arguments are used to build the unique key identifying a specific object instance!
  * Hence the combination of all arguments needs to be serialisable and unique.
+ * Important: 
  * @returns the unique instance of the object type corresponding to the unique key built out of the
  * construction arguments.
  * Note: the instance is automatically added to the cache and cannot be removed from it.
@@ -36,3 +38,16 @@ export const getFromCache = <T>(cache: unknown, ctor: Ctor<T>, ...ctorParams: Co
     return (cache as any)[Symbol.for(JSON.stringify(ctorParams))] ??= factory(ctor, ...ctorParams);
 };
 
+/**
+ * Type of a cache for Intl.DateTimeFormat instances
+ */
+export type DateTimeFormatCache = {
+    [key: symbol]: Intl.DateTimeFormat;
+}
+
+/**
+ * Type of a cache for Intl.NumberFormat instances
+ */
+export type NumberFormatCache = {
+    [key: symbol]: Intl.NumberFormat;
+}
