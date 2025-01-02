@@ -1,10 +1,11 @@
-# [1.2.0](https://github.com/khatastroffik/react-text-renderer-components/compare/v1.1.0...v1.2.0) (2024-11-22)
+# [1.3.0](https://github.com/khatastroffik/react-text-renderer-components/compare/v1.2.0...v1.3.0) (2025-01-02)
 
 
-### Features
+### Maintenance
 
-* add the NEW component "QuarterRenderer" to render the quarter number (and optional the  year) of an input date ([a0c2351](https://github.com/khatastroffik/react-text-renderer-components/commit/a0c2351486529532f90b9a990dc9083e82d72a8a))
+This *maintenance* release improves the following:
 
-
-
-
+- "type checking" experience when using typescript
+- overall quality of the code
+- tests and code coverage
+- documentation
