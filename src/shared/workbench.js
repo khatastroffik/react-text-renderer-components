@@ -1,3 +1,4 @@
+// ~~~~~ WEEK RENDERER ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 // Returns the ISO calendar week corresponding to the input date.
 function calcISOWeek(inputDate) {
@@ -24,8 +25,6 @@ function calcYearOfISOCalendarWeek(inputDate) {
     return purifiedDate.getFullYear();
 }
 
-// ~~~~~ WEEK RENDERER ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 // const formatter = new Intl.NumberFormat(undefined, {minimumIntegerDigits:2, useGrouping: false, numberingSystem: "tibt"});
 // const formatter = new Intl.NumberFormat(undefined, {minimumIntegerDigits:1, useGrouping: false, numberingSystem: "hanidec"});
 const formatter = new Intl.NumberFormat(undefined, { minimumIntegerDigits: 2, useGrouping: false });
@@ -41,10 +40,7 @@ const quarterFormatter = new Intl.NumberFormat(undefined, { minimumIntegerDigits
 const yearFormatter = new Intl.DateTimeFormat(undefined, { year: "numeric" });
 console.log(`[${new Date("2025-12-29T11:11:11.111Z").toLocaleDateString()}] Q ${quarterFormatter.format(calcQuarter(d))}/${yearFormatter.format(d)}`);
 
-
-
 /**
-
 showdate("2024-10-06T19:40:55.221Z");  2024-10-06 -> CW 40 2024
 showdate("2023-01-01T19:40:55.221Z");  2023-01-01 -> CW 52 2022
 showdate("2025-12-28T11:11:11.111Z");  2025-12-28 -> CW 52 2025
@@ -60,5 +56,4 @@ showdate("2027-01-01T11:11:11.111Z");  2027-01-01 -> CW 53 2026
 showdate("2027-01-02T11:11:11.111Z");  2027-01-02 -> CW 53 2026
 showdate("2027-01-03T11:11:11.111Z");  2027-01-03 -> CW 53 2026
 showdate("2027-01-04T11:11:11.111Z");  2027-01-04 -> CW 01 2027
-
 */
