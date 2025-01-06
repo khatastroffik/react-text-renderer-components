@@ -4,6 +4,7 @@ import { TimeRenderer } from "./TimeRenderer";
 import { DateTimeRenderer } from "./DateTimeRenderer";
 import { WeekRenderer } from "./WeekRenderer";
 import { QuarterRenderer } from "./QuarterRenderer";
+import { TextRenderer } from "./TextRenderer";
 import banner from '../../docs/johannes-plenio-2QUvkQTBh5s-unsplash.jpg';
 
 <style>
@@ -85,6 +86,16 @@ import banner from '../../docs/johannes-plenio-2QUvkQTBh5s-unsplash.jpg';
     }
     .accordion > input[type="checkbox"]:checked ~ .handle label:after {
         content: "↓";
+    }
+    .previewoutput table {
+        margin-left:auto; 
+        margin-right:auto;    
+    }
+    .previewoutput table tbody tr {
+        background-color: transparent!important;
+    }
+    .previewoutput table thead {
+        background: #f5f5f5;
     }
 `}
 </style>
@@ -246,6 +257,29 @@ import banner from '../../docs/johannes-plenio-2QUvkQTBh5s-unsplash.jpg';
     `} dark />
   </div>
   <p>Note: the Date value passed as property to the WeekRenderer component should be a **UTC** date</p>
+</section>
+
+### TextRenderer
+
+<div className="previewoutput centeredtable">
+    | Input value string | Transformation function | Rendering Output |
+    |---|---|---|
+    | some text | noop | <TextRenderer value="some text" transform="noop" /> |
+    | SOME TEXT | lowercase | <TextRenderer value="SOME TEXT" transform="lowercase" /> |
+    | some text | uppercase | <TextRenderer value="some text" transform="uppercase" /> |
+</div>
+<section className="accordion">
+  <input type="checkbox" name="collapse6" id="preview6" tabIndex="0" />
+  <div className="handle" >
+    <label htmlFor="preview6">source code</label>
+  </div>
+  <div className="content">
+    <Source code={`
+<TextRenderer value={"some text"} transform="noop" />
+<TextRenderer value={"SOME TEXT"} transform="lowercase" />
+<TextRenderer value={"some text"} transform="uppercase" />
+    `} dark />
+  </div>
 </section>
 
 <hr />

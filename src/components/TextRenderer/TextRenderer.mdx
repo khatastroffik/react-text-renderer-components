@@ -1,0 +1,37 @@
+import { Primary, Canvas, Source, Meta, ArgTypes, Description, Controls } from '@storybook/blocks';
+import * as TextRendererStories from './TextRenderer.stories';
+
+<Meta of={TextRendererStories} name="TextRenderer Documentation"  />
+
+# TextRenderer
+
+<Description of={TextRendererStories} />
+
+### Preview
+
+<Primary />
+
+### Properties
+
+The text representation can be customized using the appropriates tag attributes i.e. component properties, as described below.
+
+<Controls of={TextRendererStories.Playground} />
+{/* <ArgTypes of={TextRendererStories} sort="requiredFirst" /> */}
+
+Notes:
+
+- This component is rendering text transformed by predefined, standard functions like "lowercase", "uppercase", "camelcase", "kebabcase" etc. 
+- The values and options used/available within the "Control" column are for demonstration purpose only.
+- Use the "Reset controls" button on the top right side of the table in order to restore the initial demo values and options. Alternatively, you could reload the page.
+
+### Usage
+
+<Source dark type={"jsx"} code={`
+import { TextRenderer } from 'react-text-renderer-components';
+
+const Example = () => {
+    return <TextRenderer value={"SOME TEXT"} transform="lowercase" />
+}`
+} />
+
+Back to the [Github Repository](https://github.com/khatastroffik/react-text-renderer-components)
