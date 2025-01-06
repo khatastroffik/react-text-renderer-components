@@ -1,4 +1,4 @@
-import { Canvas, Source, Meta, Story } from '@storybook/blocks';
+import { Canvas, Source, Meta, Story, Markdown } from '@storybook/blocks';
 import { DateRenderer } from "./DateRenderer";
 import { TimeRenderer } from "./TimeRenderer";
 import { DateTimeRenderer } from "./DateTimeRenderer";
@@ -188,11 +188,11 @@ import banner from '../../docs/johannes-plenio-2QUvkQTBh5s-unsplash.jpg';
 
 <div className="previewoutput">
     <DateRenderer value={new Date()} /> &rarr; <QuarterRenderer value={new Date()} /><br />
-    <DateRenderer value={new Date("2024-12-31T11:11:11.111Z")} /> &rarr; <QuarterRenderer value={new Date("2024-12-31T11:11:11.111Z")} pure /><br />
-    <DateRenderer value={new Date("2025-01-01T11:11:11.111Z")} /> &rarr; <QuarterRenderer value={new Date("2025-01-01T11:11:11.111Z")} displayYear pure /><br />
-    <DateRenderer value={new Date("2026-04-28T11:11:11.111Z")} /> &rarr; <QuarterRenderer value={new Date("2026-04-28T11:11:11.111Z")} pure /><br />
-    <DateRenderer value={new Date("2027-07-31T11:11:11.111Z")} /> &rarr; <QuarterRenderer value={new Date("2027-07-31T11:11:11.111Z")} displayYear pure /><br />
-    <DateRenderer value={new Date("2027-10-04T11:11:11.111Z")} /> &rarr; <QuarterRenderer value={new Date("2027-10-04T11:11:11.111Z")} displayYear /><br />
+    <DateRenderer value={new Date("2024-12-31")} /> &rarr; <QuarterRenderer value={new Date("2024-12-31")} pure /><br />
+    <DateRenderer value={new Date("2025-01-01")} /> &rarr; <QuarterRenderer value={new Date("2025-01-01")} displayYear pure /><br />
+    <DateRenderer value={new Date("2026-04-28")} /> &rarr; <QuarterRenderer value={new Date("2026-04-28")} pure /><br />
+    <DateRenderer value={new Date("2027-07-31")} /> &rarr; <QuarterRenderer value={new Date("2027-07-31")} displayYear pure /><br />
+    <DateRenderer value={new Date("2027-10-04")} /> &rarr; <QuarterRenderer value={new Date("2027-10-04")} displayYear /><br />
 </div>
 <section className="accordion">
   <input type="checkbox" name="collapse4" id="preview4" tabIndex="0" />
@@ -202,29 +202,29 @@ import banner from '../../docs/johannes-plenio-2QUvkQTBh5s-unsplash.jpg';
   <div className="content">
     <Source code={`
 <QuarterRenderer value={new Date()} />
-<QuarterRenderer value={new Date("2024-12-31T11:11:11.111Z")} pure />
-<QuarterRenderer value={new Date("2025-01-01T11:11:11.111Z")} displayYear pure />
-<QuarterRenderer value={new Date("2026-04-28T11:11:11.111Z")} pure />
-<QuarterRenderer value={new Date("2027-07-31T11:11:11.111Z")} displayYear pure />
-<QuarterRenderer value={new Date("2027-10-04T11:11:11.111Z")} displayYear />
+<QuarterRenderer value={new Date("2024-12-31")} pure />
+<QuarterRenderer value={new Date("2025-01-01")} displayYear pure />
+<QuarterRenderer value={new Date("2026-04-28")} pure />
+<QuarterRenderer value={new Date("2027-07-31")} displayYear pure />
+<QuarterRenderer value={new Date("2027-10-04")} displayYear />
     `} dark />
   </div>
-  <p>Note: the Date value passed as property to the TimeRenderer component should be a **UTC** date</p>
+  <p>Note: the Date value passed as property to the QuarterRenderer component should be a **UTC** date</p>
 </section>
 
 ### WeekRenderer
 
 <div className="previewoutput">
     <DateRenderer value={new Date()} /> &rarr; <WeekRenderer value={new Date()} /><br />
-    <DateRenderer value={new Date("2024-10-06T19:40:55.221Z")} /> &rarr; <WeekRenderer value={new Date("2024-10-06T19:40:55.221Z")} pure /><br />
-    <DateRenderer value={new Date("2025-12-29T11:11:11.111Z")} /> &rarr; <WeekRenderer value={new Date("2025-12-29T11:11:11.111Z")} displayYear pure /><br />
-    <DateRenderer value={new Date("2024-12-30T11:11:11.111Z")} /> &rarr; <WeekRenderer value={new Date("2024-12-30T11:11:11.111Z")} pure /><br />
-    <DateRenderer value={new Date("2025-01-01T11:11:11.111Z")} /> &rarr; <WeekRenderer value={new Date("2025-01-01T11:11:11.111Z")} displayYear pure /><br />
-    <DateRenderer value={new Date("2025-01-01T11:11:11.111Z")} /> &rarr; <WeekRenderer value={new Date("2025-01-01T11:11:11.111Z")} displayYear numberingSystem="tibt" pure /><br />
-    <DateRenderer value={new Date("2026-12-28T11:11:11.111Z")} /> &rarr; <WeekRenderer value={new Date("2026-12-28T11:11:11.111Z")} displayYear pure /><br />
-    <DateRenderer value={new Date("2027-01-03T11:11:11.111Z")} /> &rarr; <WeekRenderer value={new Date("2027-01-03T11:11:11.111Z")} displayYear pure /><br />
-    <DateRenderer value={new Date("2027-01-04T11:11:11.111Z")} /> &rarr; <WeekRenderer value={new Date("2027-01-04T11:11:11.111Z")} displayYear pure /><br />
-    <DateRenderer value={new Date("2025-12-29T11:11:11.111Z")} /> &rarr; <WeekRenderer value={new Date("2025-12-29T11:11:11.111Z")} displayYear pure /><br />
+    <DateRenderer value={new Date("2024-10-06")} /> &rarr; <WeekRenderer value={new Date("2024-10-06")} pure /><br />
+    <DateRenderer value={new Date("2025-12-29")} /> &rarr; <WeekRenderer value={new Date("2025-12-29")} displayYear pure /><br />
+    <DateRenderer value={new Date("2024-12-30")} /> &rarr; <WeekRenderer value={new Date("2024-12-30")} pure /><br />
+    <DateRenderer value={new Date("2025-01-01")} /> &rarr; <WeekRenderer value={new Date("2025-01-01")} displayYear pure /><br />
+    <DateRenderer value={new Date("2025-01-01")} /> &rarr; <WeekRenderer value={new Date("2025-01-01")} displayYear numberingSystem="tibt" pure /><br />
+    <DateRenderer value={new Date("2026-12-28")} /> &rarr; <WeekRenderer value={new Date("2026-12-28")} displayYear pure /><br />
+    <DateRenderer value={new Date("2027-01-03")} /> &rarr; <WeekRenderer value={new Date("2027-01-03")} displayYear pure /><br />
+    <DateRenderer value={new Date("2027-01-04")} /> &rarr; <WeekRenderer value={new Date("2027-01-04")} displayYear pure /><br />
+    <DateRenderer value={new Date("2025-12-29")} /> &rarr; <WeekRenderer value={new Date("2025-12-29")} displayYear pure /><br />    
 </div>
 <section className="accordion">
   <input type="checkbox" name="collapse5" id="preview5" tabIndex="0" />
@@ -234,18 +234,18 @@ import banner from '../../docs/johannes-plenio-2QUvkQTBh5s-unsplash.jpg';
   <div className="content">
     <Source code={`
 <WeekRenderer value={new Date()} />
-<WeekRenderer value={new Date("2024-10-06T19:40:55.221Z")} pure />
-<WeekRenderer value={new Date("2025-12-29T11:11:11.111Z")} displayYear pure />
-<WeekRenderer value={new Date("2024-12-30T11:11:11.111Z")} pure />
-<WeekRenderer value={new Date("2025-01-01T11:11:11.111Z")} displayYear pure />
-<WeekRenderer value={new Date("2025-01-01T11:11:11.111Z")} displayYear numberingSystem="tibt" pure />
-<WeekRenderer value={new Date("2026-12-28T11:11:11.111Z")} displayYear pure />
-<WeekRenderer value={new Date("2027-01-03T11:11:11.111Z")} displayYear pure />
-<WeekRenderer value={new Date("2027-01-04T11:11:11.111Z")} displayYear pure />
-<WeekRenderer value={new Date("2025-12-29T11:11:11.111Z")} displayYear pure />
+<WeekRenderer value={new Date("2024-10-06")} pure />
+<WeekRenderer value={new Date("2025-12-29")} displayYear pure />
+<WeekRenderer value={new Date("2024-12-30")} pure />
+<WeekRenderer value={new Date("2025-01-01")} displayYear pure />
+<WeekRenderer value={new Date("2025-01-01")} displayYear numberingSystem="tibt" pure />
+<WeekRenderer value={new Date("2026-12-28")} displayYear pure />
+<WeekRenderer value={new Date("2027-01-03")} displayYear pure />
+<WeekRenderer value={new Date("2027-01-04")} displayYear pure />
+<WeekRenderer value={new Date("2025-12-29")} displayYear pure />
     `} dark />
   </div>
-  <p>Note: the Date value passed as property to the TimeRenderer component should be a **UTC** date</p>
+  <p>Note: the Date value passed as property to the WeekRenderer component should be a **UTC** date</p>
 </section>
 
 <hr />
