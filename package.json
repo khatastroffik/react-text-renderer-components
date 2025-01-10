@@ -14,7 +14,7 @@
     "lint": "eslint",
     "lint:fix": "eslint --fix",
     "lint:inspect": "eslint --inspect-config",
-    "check": "tsc --noEmit src/index.ts --jsx react-jsx --esModuleInterop --skipLibCheck",
+    "check": "tsc --noEmit src/index.ts --jsx react-jsx --esModuleInterop --skipLibCheck --lib esnext" ,
     "test": "jest",
     "test:watch": "jest --watch --verbose",
     "test:ci": "jest --ci --noStackTrace --passWithNoTests -c jest.config.ci.ts",
