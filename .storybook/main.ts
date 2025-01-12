@@ -3,6 +3,7 @@ import remarkGfm from 'remark-gfm';
 
 const config: StorybookConfig = {
   stories: ["../src/components/introduction.mdx", "../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
+
   addons: [
     "@storybook/addon-webpack5-compiler-swc",
     "@storybook/addon-links",
@@ -18,16 +19,20 @@ const config: StorybookConfig = {
         },
       },    
   ],
+
   framework: {
     name: "@storybook/react-webpack5",
     options: { builder: { useSWC: true } }
   },
+
   core: {
     disableTelemetry: true, 
   },
+
   typescript: {
     reactDocgen: 'react-docgen-typescript',
   },
+
   build: {
     test: {
       disableBlocks: false,
@@ -39,7 +44,10 @@ const config: StorybookConfig = {
       disableTreeShaking: false      
     }
   },
-  staticDirs: ["../test-reports"]
+
+  staticDirs: ["../test-reports"],
+
+  docs: {}
 };
 
 export default config; 
