@@ -25,6 +25,7 @@
         "storybook:info": "storybook info --disable-telemetry",
         "DISABLEDprestorybook:build": "npm run test:ci",
         "version": "rimraf CHANGELOG.md RELEASENOTE.md && standard-changelog -r 1 -o RELEASENOTE.md && standard-changelog -f && git add CHANGELOG.md RELEASENOTE.md",
+        "postversion": "git push && git push --tags && npm run clean",
         "bl": "npx browserslist",
         "update-dependencies": "npx npm-check --dev-only --update"
     },
