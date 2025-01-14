@@ -1,10 +1,30 @@
-import { Canvas, Source, Meta, Story } from '@storybook/blocks';
+import { Canvas, Source, Meta, Story, Markdown } from '@storybook/blocks';
 import { DateRenderer } from "./DateRenderer";
 import { TimeRenderer } from "./TimeRenderer";
 import { DateTimeRenderer } from "./DateTimeRenderer";
 import { WeekRenderer } from "./WeekRenderer";
 import { QuarterRenderer } from "./QuarterRenderer";
+import { TextRenderer } from "./TextRenderer";
 import banner from '../../docs/johannes-plenio-2QUvkQTBh5s-unsplash.jpg';
+
+export function UTCDate() {  return <>{new Date().toUTCString()}</> }
+
+export function PreviewHeader(props) {
+    return <>
+        <div><small>Syntax (basic)</small></div>
+        <div className='syntax'><Source code={props.syntax} dark excludeDecorators /></div>
+        <div><small>Usage examples</small></div>
+    </>
+}
+
+export function PreviewFooter(props) {
+    return <>
+        <div className='previewfooter'>
+            <div className='spaced'><small>Documentation</small></div>
+            <div>Visit the {props.children} documentation page</div>       
+        </div>
+    </>
+}
 
 <style>
 {`
@@ -44,7 +64,7 @@ import banner from '../../docs/johannes-plenio-2QUvkQTBh5s-unsplash.jpg';
         margin: 1em 0;
     }
     .accordion .docblock-source {
-        margin: 0 !important;
+        margin: 0 10rem!important;
     }
     .accordion > input[type="checkbox"] {
         display: none;
@@ -86,6 +106,37 @@ import banner from '../../docs/johannes-plenio-2QUvkQTBh5s-unsplash.jpg';
     .accordion > input[type="checkbox"]:checked ~ .handle label:after {
         content: "↓";
     }
+    .previewoutput table {
+        margin-left:auto; 
+        margin-right:auto;    
+    }
+    .previewoutput table tbody tr {
+        background-color: transparent!important;
+    }
+    .previewoutput table thead {
+        background: #f5f5f5;
+    }
+    .previewoutput td, .previewoutput table tbody span {
+        font-size: 14px!important;
+    }
+    .previewoutput td:nth-child(3), .previewoutput th:nth-child(3) {
+        color: brown!important;
+    }
+    .previewoutput .syntax {
+        margin: 0 10rem 20px!important;
+    }   
+    .previewoutput div > small {
+        color: grey!important;
+    }
+    .previewoutput .content {
+        text-align: initial!important;
+    }
+    .previewfooter {
+        margin: 2rem 0;
+    }
+    .previewfooter .spaced {
+        margin-bottom: 1rem!important;
+    }
 `}
 </style>
 
@@ -96,82 +147,110 @@ import banner from '../../docs/johannes-plenio-2QUvkQTBh5s-unsplash.jpg';
     <div className='by'>by KHATASTROFFIK</div>
 </div>
 
-## TL;DR 
 
 **MANAGE YOUR DATA, NOT THEIR STRING REPRESENTATION!**
 
-**`react-text-renderer-components`** is a zero-dependencies component library providing a set of (pure) text rendering utility components.
+**react-text-renderer-components** is a zero-dependencies component library providing a set of (pure) text rendering utility components.
+
+## Components
+
+- [DatenRenderer](#daterenderer)
+- [TimeRenderer](#timerenderer)
+- [DateTimeRenderer](#datetimerenderer)
+- [QuarterRenderer](#quarterrenderer)
+- [WeekRenderer](#weekrenderer)
+- [TextRenderer](#textrenderer)
 
 ## Previews
 
 ### DateRenderer
 
 <div className="previewoutput">
-    <DateRenderer value={new Date()} /><br />
-    <DateRenderer value={new Date()} locale="en-EN"/><br />
-    <DateRenderer value={new Date()} locale="fr-FR" pure/><br />
-    <DateRenderer value={new Date("2024-10-06T19:40:55.221Z")} locale="fr-FR" /><br />
-    <DateRenderer value={new Date()} locale="it-IT"/><br />
-    <DateRenderer value={new Date()} locale="ja-JP" pure /><br />
-</div>
-<section className="accordion">
-  <input type="checkbox" name="collapse1" id="preview1" tabIndex="0" />
-  <div className="handle" >
-    <label htmlFor="preview1">source code</label>
-  </div>
-  <div className="content">
-    <Source code={`
+    
+    <PreviewHeader syntax="<DateRenderer value={Some_DATE_Value} />" />
+
+    | Input Value | Component Settings | Output |
+    |---|---|---|
+    | <UTCDate /> | _(system locale)_ | <DateRenderer value={new Date()} /> |
+    | <UTCDate /> | locale="en-EN" | <DateRenderer value={new Date()} locale="en-EN"/> |
+    | <UTCDate /> | locale="fr-FR"<br />pure | <DateRenderer value={new Date()} locale="fr-FR" pure/> |
+    | 2024-10-06T19:40:55.221Z | locale="fr-FR" | <DateRenderer value={new Date("2024-10-06T19:40:55.221Z")} locale="fr-FR" /> |
+    | <UTCDate /> | locale="it-IT" | <DateRenderer value={new Date()} locale="it-IT" /> |
+    | <UTCDate /> | locale="ja-JP"<br />pure | <DateRenderer value={new Date()} locale="ja-JP" pure /> |
+
+    <section className="accordion">
+    <input type="checkbox" name="collapse1" id="preview1" tabIndex="0" />
+    <div className="handle" >
+        <label htmlFor="preview1">source code</label>
+    </div>
+    <div className="content">
+        <Source code={`
 <DateRenderer value={new Date()} />
 <DateRenderer value={new Date()} locale="en-EN"/>
 <DateRenderer value={new Date()} locale="fr-FR" pure />
 <DateRenderer value={new Date("2024-10-06T19:40:55.221Z")} locale="fr-FR" />
 <DateRenderer value={new Date()} locale="it-IT"/>
 <DateRenderer value={new Date()} locale="ja-JP" pure />
-    `} dark />
-  </div>
-  <p>Note: the Date value passed as property to the DateRenderer component should be a **UTC** date</p>
-</section>
+        `} dark />
+    </div>
+    <p>Note: the Date value passed as property to the DateRenderer component should be a **UTC** date</p>
+    </section>
+
+    <PreviewFooter>[**DateRenderer**](/docs/components-daterenderer--daterenderer-documentation)</PreviewFooter>
+</div>
 
 ### TimeRenderer
 
 <div className="previewoutput">
-    <TimeRenderer value={new Date()} /><br />
-    <TimeRenderer value={new Date("2024-10-06T19:40:55.221Z")} pure /><br />
-    <TimeRenderer value={new Date()} locale="en-EN"/><br />
-</div>
-<section className="accordion">
-  <input type="checkbox" name="collapse2" id="preview2" tabIndex="0" />
-  <div className="handle" >
-    <label htmlFor="preview2">source code</label>
-  </div>
-  <div className="content">
-    <Source code={`
+
+    <PreviewHeader syntax="<TimeRenderer value={Some_DATE_Value} />" />
+
+    | Input Value | Component Settings | Output |
+    |---|---|---|
+    | <UTCDate /> | _(system locale)_ | <TimeRenderer value={new Date()} /> |
+    | 2024-10-06T19:40:55.221Z | _(system locale)_<br />pure | <TimeRenderer value={new Date("2024-10-06T19:40:55.221Z")} pure /> |
+    | <UTCDate /> | locale="en-EN" | <TimeRenderer value={new Date()} locale="en-EN"/> |
+
+    <section className="accordion">
+    <input type="checkbox" name="collapse2" id="preview2" tabIndex="0" />
+    <div className="handle" >
+        <label htmlFor="preview2">source code</label>
+    </div>
+    <div className="content">
+        <Source code={`
 <TimeRenderer value={new Date()} />
 <TimeRenderer value={new Date("2024-10-06T19:40:55.221Z")} pure />
 <TimeRenderer value={new Date()} locale="en-EN"/>
-    `} dark />
-  </div>
-  <p>Note: the Date value passed as property to the TimeRenderer component should be a **UTC** date</p>
-</section>
+        `} dark />
+    </div>
+    <p>Note: the Date value passed as property to the TimeRenderer component should be a **UTC** date</p>
+    </section>
+    <PreviewFooter>[**TimeRenderer**](/docs/components-timerenderer--timerenderer-documentation)</PreviewFooter>
+</div>
 
 ### DateTimeRenderer
 
 <div className="previewoutput">
-    <DateTimeRenderer value={new Date()} /><br />
-    <DateTimeRenderer value={new Date()} locale="en-EN" pure /><br />
-    <DateTimeRenderer value={new Date()} locale="fr-FR" formatOptions={{ dateStyle: "full", timeStyle: "short", timeZone: "America/Lima" }} /><br />
-    <DateTimeRenderer value={new Date()} locale="it-IT"/><br />
-    <DateTimeRenderer value={new Date("2024-10-06T19:40:55.221Z")} locale="it-IT" pure/><br />
-    <DateTimeRenderer value={new Date()} locale="ja-JP" formatOptions={{ dateStyle: "full", timeStyle: "full" }}/><br />
-    <DateTimeRenderer value={new Date()} formatOptions={{ dateStyle: "full", timeStyle: "short", timeZone: "Australia/Sydney", hour12: true, calendar: "persian" }} /><br />
-</div>
-<section className="accordion">
-  <input type="checkbox" name="collapse3" id="preview3" tabIndex="0" />
-  <div className="handle" >
-    <label htmlFor="preview3">source code</label>
-  </div>
-  <div className="content">
-    <Source code={`
+    
+    <PreviewHeader syntax="<DateTimeRenderer value={Some_DATE_Value} />" />
+
+    | Input Value | Component Settings | Output |
+    |---|---|---|
+    | <UTCDate /> | _(system locale)_ | <DateTimeRenderer value={new Date()} /> |
+    | <UTCDate /> | locale="en-EN" pure | <DateTimeRenderer value={new Date()} locale="en-EN" pure /> |
+    | <UTCDate /> | locale="fr-FR"<br />dateStyle: "full"<br />timeStyle: "short"<br />timeZone: "America/Lima" | <DateTimeRenderer value={new Date()} locale="fr-FR" formatOptions={{ dateStyle: "full", timeStyle: "short", timeZone: "America/Lima" }} /> |
+    | <UTCDate /> | locale="it-IT" | <DateTimeRenderer value={new Date()} locale="it-IT"/> |
+    | 2024-10-06T19:40:55.221Z | locale="it-IT" pure | <DateTimeRenderer value={new Date("2024-10-06T19:40:55.221Z")} locale="it-IT" pure /> |
+    | <UTCDate /> | locale="ja-JP"<br />dateStyle: "full"<br />timeStyle: "full" | <DateTimeRenderer value={new Date()} locale="ja-JP" formatOptions={{ dateStyle: "full", timeStyle: "full" }}/> |
+    | <UTCDate /> | dateStyle: "full"<br />timeStyle: "short"<br />timeZone: "Australia/Sydney"<br />hour12: true<br />calendar: "persian" | <DateTimeRenderer value={new Date()} formatOptions={{ dateStyle: "full", timeStyle: "short", timeZone: "Australia/Sydney", hour12: true, calendar: "persian" }} /> |
+
+    <section className="accordion">
+    <input type="checkbox" name="collapse3" id="preview3" tabIndex="0" />
+    <div className="handle" >
+        <label htmlFor="preview3">source code</label>
+    </div>
+    <div className="content">
+        <Source code={`
 <DateTimeRenderer value={new Date()} />
 <DateTimeRenderer value={new Date()} locale="en-EN" pure />
 <DateTimeRenderer value={new Date()} locale="fr-FR" formatOptions={{ dateStyle: "full", timeStyle: "short", timeZone: "America/Lima" }} />
@@ -180,74 +259,136 @@ import banner from '../../docs/johannes-plenio-2QUvkQTBh5s-unsplash.jpg';
 <DateTimeRenderer value={new Date()} locale="ja-JP" formatOptions={{ dateStyle: "full", timeStyle: "full" }}/>
 <DateTimeRenderer value={new Date()} formatOptions={{ dateStyle: "full", timeStyle: "short", timeZone: "Australia/Sydney", hour12: true, calendar: "persian" }} />
     `} dark />
-  </div>
-  <p>Note: the Date value passed as property to the DateTimeRenderer component should be a **UTC** date</p>
-</section>
+    </div>
+    <p>Note: the Date value passed as property to the DateTimeRenderer component should be a **UTC** date</p>
+    </section>
+
+    <PreviewFooter>[**DateTimeRenderer**](/docs/components-datetimerenderer--datetimerenderer-documentation)</PreviewFooter>
+</div>
 
 ### QuarterRenderer
 
 <div className="previewoutput">
-    <DateRenderer value={new Date()} /> &rarr; <QuarterRenderer value={new Date()} /><br />
-    <DateRenderer value={new Date("2024-12-31T11:11:11.111Z")} /> &rarr; <QuarterRenderer value={new Date("2024-12-31T11:11:11.111Z")} pure /><br />
-    <DateRenderer value={new Date("2025-01-01T11:11:11.111Z")} /> &rarr; <QuarterRenderer value={new Date("2025-01-01T11:11:11.111Z")} displayYear pure /><br />
-    <DateRenderer value={new Date("2026-04-28T11:11:11.111Z")} /> &rarr; <QuarterRenderer value={new Date("2026-04-28T11:11:11.111Z")} pure /><br />
-    <DateRenderer value={new Date("2027-07-31T11:11:11.111Z")} /> &rarr; <QuarterRenderer value={new Date("2027-07-31T11:11:11.111Z")} displayYear pure /><br />
-    <DateRenderer value={new Date("2027-10-04T11:11:11.111Z")} /> &rarr; <QuarterRenderer value={new Date("2027-10-04T11:11:11.111Z")} displayYear /><br />
-</div>
-<section className="accordion">
-  <input type="checkbox" name="collapse4" id="preview4" tabIndex="0" />
-  <div className="handle" >
-    <label htmlFor="preview4">source code</label>
-  </div>
-  <div className="content">
-    <Source code={`
+
+    <PreviewHeader syntax="<QuarterRenderer value={Some_DATE_Value} />" />
+
+    | Input value | Component Settings | Output |
+    |---|---|---|
+    | <DateRenderer value={new Date()} /> | pure | <QuarterRenderer value={new Date()} /> |
+    | <DateRenderer value={new Date("2024-12-31")} /> | pure | <QuarterRenderer value={new Date("2024-12-31")} pure /> |
+    | <DateRenderer value={new Date("2025-01-01")} /> | displayYear pure | <QuarterRenderer value={new Date("2025-01-01")} displayYear pure /> |
+    | <DateRenderer value={new Date("2026-04-28")} /> | pure | <QuarterRenderer value={new Date("2026-04-28")} pure /> |
+    | <DateRenderer value={new Date("2027-07-31")} /> | displayYear pure | <QuarterRenderer value={new Date("2027-07-31")} displayYear pure/> |
+    | <DateRenderer value={new Date("2027-10-04")} /> | displayYear | <QuarterRenderer value={new Date("2027-10-04")} displayYear /> |
+
+    <section className="accordion">
+    <input type="checkbox" name="collapse4" id="preview4" tabIndex="0" />
+    <div className="handle" >
+        <label htmlFor="preview4">source code</label>
+    </div>
+    <div className="content">
+        <Source code={`
 <QuarterRenderer value={new Date()} />
-<QuarterRenderer value={new Date("2024-12-31T11:11:11.111Z")} pure />
-<QuarterRenderer value={new Date("2025-01-01T11:11:11.111Z")} displayYear pure />
-<QuarterRenderer value={new Date("2026-04-28T11:11:11.111Z")} pure />
-<QuarterRenderer value={new Date("2027-07-31T11:11:11.111Z")} displayYear pure />
-<QuarterRenderer value={new Date("2027-10-04T11:11:11.111Z")} displayYear />
-    `} dark />
-  </div>
-  <p>Note: the Date value passed as property to the TimeRenderer component should be a **UTC** date</p>
-</section>
+<QuarterRenderer value={new Date("2024-12-31")} pure />
+<QuarterRenderer value={new Date("2025-01-01")} displayYear pure />
+<QuarterRenderer value={new Date("2026-04-28")} pure />
+<QuarterRenderer value={new Date("2027-07-31")} displayYear pure />
+<QuarterRenderer value={new Date("2027-10-04")} displayYear />
+        `} dark />
+    </div>
+    <p>Note: the Date value passed as property to the QuarterRenderer component should be a **UTC** date</p>
+    </section>
+
+    <PreviewFooter>[**QuarterRenderer**](/docs/components-quarterrenderer--quarterrenderer-documentation)</PreviewFooter>
+</div>
 
 ### WeekRenderer
 
 <div className="previewoutput">
-    <DateRenderer value={new Date()} /> &rarr; <WeekRenderer value={new Date()} /><br />
-    <DateRenderer value={new Date("2024-10-06T19:40:55.221Z")} /> &rarr; <WeekRenderer value={new Date("2024-10-06T19:40:55.221Z")} pure /><br />
-    <DateRenderer value={new Date("2025-12-29T11:11:11.111Z")} /> &rarr; <WeekRenderer value={new Date("2025-12-29T11:11:11.111Z")} displayYear pure /><br />
-    <DateRenderer value={new Date("2024-12-30T11:11:11.111Z")} /> &rarr; <WeekRenderer value={new Date("2024-12-30T11:11:11.111Z")} pure /><br />
-    <DateRenderer value={new Date("2025-01-01T11:11:11.111Z")} /> &rarr; <WeekRenderer value={new Date("2025-01-01T11:11:11.111Z")} displayYear pure /><br />
-    <DateRenderer value={new Date("2025-01-01T11:11:11.111Z")} /> &rarr; <WeekRenderer value={new Date("2025-01-01T11:11:11.111Z")} displayYear numberingSystem="tibt" pure /><br />
-    <DateRenderer value={new Date("2026-12-28T11:11:11.111Z")} /> &rarr; <WeekRenderer value={new Date("2026-12-28T11:11:11.111Z")} displayYear pure /><br />
-    <DateRenderer value={new Date("2027-01-03T11:11:11.111Z")} /> &rarr; <WeekRenderer value={new Date("2027-01-03T11:11:11.111Z")} displayYear pure /><br />
-    <DateRenderer value={new Date("2027-01-04T11:11:11.111Z")} /> &rarr; <WeekRenderer value={new Date("2027-01-04T11:11:11.111Z")} displayYear pure /><br />
-    <DateRenderer value={new Date("2025-12-29T11:11:11.111Z")} /> &rarr; <WeekRenderer value={new Date("2025-12-29T11:11:11.111Z")} displayYear pure /><br />
-</div>
-<section className="accordion">
-  <input type="checkbox" name="collapse5" id="preview5" tabIndex="0" />
-  <div className="handle" >
-    <label htmlFor="preview5">source code</label>
-  </div>
-  <div className="content">
-    <Source code={`
-<WeekRenderer value={new Date()} />
-<WeekRenderer value={new Date("2024-10-06T19:40:55.221Z")} pure />
-<WeekRenderer value={new Date("2025-12-29T11:11:11.111Z")} displayYear pure />
-<WeekRenderer value={new Date("2024-12-30T11:11:11.111Z")} pure />
-<WeekRenderer value={new Date("2025-01-01T11:11:11.111Z")} displayYear pure />
-<WeekRenderer value={new Date("2025-01-01T11:11:11.111Z")} displayYear numberingSystem="tibt" pure />
-<WeekRenderer value={new Date("2026-12-28T11:11:11.111Z")} displayYear pure />
-<WeekRenderer value={new Date("2027-01-03T11:11:11.111Z")} displayYear pure />
-<WeekRenderer value={new Date("2027-01-04T11:11:11.111Z")} displayYear pure />
-<WeekRenderer value={new Date("2025-12-29T11:11:11.111Z")} displayYear pure />
-    `} dark />
-  </div>
-  <p>Note: the Date value passed as property to the TimeRenderer component should be a **UTC** date</p>
-</section>
 
+    <PreviewHeader syntax="<WeekRenderer value={Some_DATE_Value} />" />
+
+    | Input value | Component Settings | Output |
+    |---|---|---|
+    | <DateRenderer value={new Date()} /> | - | <WeekRenderer value={new Date()} /> |
+    | <DateRenderer value={new Date("2024-10-06")} /> | pure | <WeekRenderer value={new Date("2024-10-06")} /> |
+    | <DateRenderer value={new Date("2025-12-29")} /> | displayYear pure  | <WeekRenderer value={new Date("2025-12-29")} displayYear pure /> |
+    | <DateRenderer value={new Date("2024-12-30")} /> | pure | <WeekRenderer value={new Date("2024-12-30")} pure /> |
+    | <DateRenderer value={new Date("2025-01-01")} /> | displayYear pure | <WeekRenderer value={new Date("2025-01-01")} displayYear pure /> |
+    | <DateRenderer value={new Date("2025-01-01")} /> | displayYear numberingSystem="tibt" pure | <WeekRenderer value={new Date("2025-01-01")} displayYear numberingSystem="tibt" pure /> |
+    | <DateRenderer value={new Date("2026-12-28")} /> | displayYear pure | <WeekRenderer value={new Date("2026-12-28")} displayYear pure /> |
+    | <DateRenderer value={new Date("2027-01-03")} /> | displayYear pure | <WeekRenderer value={new Date("2027-01-03")} displayYear pure /> |
+    | <DateRenderer value={new Date("2027-01-04")} /> | displayYear pure | <WeekRenderer value={new Date("2027-01-04")} displayYear pure /> |
+    | <DateRenderer value={new Date("2025-12-29")} /> | displayYear pure | <WeekRenderer value={new Date("2025-12-29")} displayYear pure /> |
+
+    <section className="accordion">
+    <input type="checkbox" name="collapse5" id="preview5" tabIndex="0" />
+    <div className="handle" >
+        <label htmlFor="preview5">source code</label>
+    </div>
+    <div className="content">
+        <Source code={`
+<WeekRenderer value={new Date()} />
+<WeekRenderer value={new Date("2024-10-06")} pure />
+<WeekRenderer value={new Date("2025-12-29")} displayYear pure />
+<WeekRenderer value={new Date("2024-12-30")} pure />
+<WeekRenderer value={new Date("2025-01-01")} displayYear pure />
+<WeekRenderer value={new Date("2025-01-01")} displayYear numberingSystem="tibt" pure />
+<WeekRenderer value={new Date("2026-12-28")} displayYear pure />
+<WeekRenderer value={new Date("2027-01-03")} displayYear pure />
+<WeekRenderer value={new Date("2027-01-04")} displayYear pure />
+<WeekRenderer value={new Date("2025-12-29")} displayYear pure />
+        `} dark />
+    </div>
+    <p>Note: the Date value passed as property to the WeekRenderer component should be a **UTC** date</p>
+    </section>
+    <PreviewFooter>[**WeekRenderer**](/docs/components-weekrenderer--weekrenderer-documentation)</PreviewFooter>
+</div>
+
+### TextRenderer
+
+<div className="previewoutput centeredtable">
+
+    <PreviewHeader syntax="<TextRenderer value={Some_STRING_Value} transform='no-op' />" />
+
+    | Input value | Transformation function | Output |
+    |---|---|---|
+    | some text | no operation | <TextRenderer value={"some text"} transform="no-op" /> |
+    | SOME TEXT | lowercase | <TextRenderer value={"SOME TEXT"} transform="lower-case" /> |
+    | some text | uppercase | <TextRenderer value={"some text"} transform="upper-case" /> |
+    | one MORE-tiME!#  1234_XYZ | snake-case | <TextRenderer value={"one MORE-tiME!#  1234_XYZ"} transform="snake-case" /> |
+    | one MORE-tiME!#  1234_XYZ | pascal-case | <TextRenderer value={"one MORE-tiME!#  1234_XYZ"} transform="pascal-case" /> |
+    | ONE more-TiMe!#  1234_XYZ | camel-case | <TextRenderer value={"ONE more-TiMe!#  1234_XYZ"} transform="camel-case" /> |
+    | ONE more-TiMe!#  1234_XYZ | kebab-case | <TextRenderer value={"ONE more-TiMe!#  1234_XYZ"} transform="kebab-case" /> |
+    | Hello! 文 🦄 ❤️ | to Base64 | <TextRenderer value={"Hello! 文 🦄 ❤️"} transform="to-base64" /> |
+    | SGVsbG8hIOaWhyDwn6aEIOKdpO+4jw== | from Base64 | <TextRenderer value={"SGVsbG8hIOaWhyDwn6aEIOKdpO+4jw=="} transform="from-base64" /> |
+    | oneMoreTime1234Xyz | camel-case to kebab-case | <TextRenderer value={"oneMoreTime1234Xyz"} transform="camel-to-kebab" /> |
+    | OneMoreTime1234Xyz | pascal-case to kebab-case | <TextRenderer value={"OneMoreTime1234Xyz"} transform="pascal-to-kebab" /> |
+  
+    <section className="accordion">
+        <input type="checkbox" name="collapse6" id="preview6" tabIndex="0" />
+        <div className="handle" >
+            <label htmlFor="preview6">source code</label>
+        </div>
+        <div className="content">
+            <Source code={`
+<TextRenderer value={"some text"} transform="no-op" />
+<TextRenderer value={"SOME TEXT"} transform="lower-case" />
+<TextRenderer value={"some text"} transform="upper-case" />
+<TextRenderer value={"one MORE-tiME!#  1234_XYZ"} transform="snake-case" />
+<TextRenderer value={"one MORE-tiME!#  1234_XYZ"} transform="pascal-case" />
+<TextRenderer value={"ONE more-TiMe!#  1234_XYZ"} transform="camel-case" />
+<TextRenderer value={"ONE more-TiMe!#  1234_XYZ"} transform="kebab-case" />
+<TextRenderer value={"Hello! 文 🦄 ❤️"} transform="to-base64" />
+<TextRenderer value={"SGVsbG8hIOaWhyDwn6aEIOKdpO+4jw=="} transform="from-base64" />
+<TextRenderer value={"oneMoreTime1234Xyz"} transform="camel-to-kebab" />
+<TextRenderer value={"OneMoreTime1234Xyz"} transform="pascal-to-kebab" />
+            `} dark />
+        </div>
+    </section>
+
+    <PreviewFooter>[**TextRenderer**](/docs/components-textrenderer--textrenderer-documentation)</PreviewFooter>
+</div>
 <hr />
 
 <div className="right">Visit the [Github Repository](https://github.com/khatastroffik/react-text-renderer-components)</div>
