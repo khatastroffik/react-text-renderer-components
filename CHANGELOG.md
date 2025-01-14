@@ -1,14 +1,8 @@
+# [1.4.0](https://github.com/khatastroffik/react-text-renderer-components/compare/v1.3.0...v1.4.0) (2025-01-14)
+
+
+
 # [1.3.0](https://github.com/khatastroffik/react-text-renderer-components/compare/v1.2.0...v1.3.0) (2025-01-02)
-
-
-### Maintenance
-
-This *maintenance* release improves the following:
-
-- "type checking" experience when using typescript
-- overall quality of the code
-- tests and code coverage
-- documentation
 
 
 
@@ -44,3 +38,6 @@ This *maintenance* release improves the following:
 * add AbstractRenderer and DateRenderer ([a8d86e5](https://github.com/khatastroffik/react-text-renderer-components/commit/a8d86e58f5678c8146b254b1381382a77cf1145e))
 * add TimeRenderer and DateTimeRenderer components ([78f605c](https://github.com/khatastroffik/react-text-renderer-components/commit/78f605c7e7f89c1a897eebb537a93739577f04d5))
 * improve DateRenderer component and its tests ([4ac81ab](https://github.com/khatastroffik/react-text-renderer-components/commit/4ac81abf9ad07014b924139e6edb540f72b4197a))
+
+
+
