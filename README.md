@@ -18,7 +18,7 @@ e.g. to render the text corresponding to a `DateOfBirth` field (Date type) withi
 
 A webapp demonstrating the usage of this library is available:
 
-- Demo web app &rarr; [Demo - react-text-renderer-components](https://khatastroffik.github.io/react-text-renderer-components-demo)
+- Demo web application &rarr; [Demo - react-text-renderer-components](https://khatastroffik.github.io/react-text-renderer-components-demo)
 - Demo source code &rarr; [Github - react-text-renderer-components-demo](https://github.com/khatastroffik/react-text-renderer-components-demo)
 
 ### Storybook documentation
