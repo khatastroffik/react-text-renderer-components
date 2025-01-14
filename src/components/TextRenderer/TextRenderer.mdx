@@ -1,0 +1,56 @@
+import { Primary, Canvas, Source, Meta, ArgTypes, Description, Controls } from '@storybook/blocks';
+import * as TextRendererStories from './TextRenderer.stories';
+
+<Meta of={TextRendererStories} name="TextRenderer Documentation"  />
+
+# TextRenderer
+
+<Description of={TextRendererStories} />
+
+### Preview
+
+<Primary />
+
+### Properties
+
+The text representation can be customized using the appropriates tag attributes i.e. component properties, as described below.
+
+<Controls of={TextRendererStories.Playground} />
+{/* <ArgTypes of={TextRendererStories} sort="requiredFirst" /> */}
+
+Notes:
+
+- This component is rendering text transformed by predefined, standard `transform` functions:
+    - **no-op**: the text is rendered as-is (_no operation_)
+    - **lower-case**: use the standard `toLowerCase()` string transformation for rendition.
+    - **upper-case**: use the standard `toUpperCase()` string transformation for rendition.
+    - **camel-case**: starts by making the first word lowercase. Then, it capitalizes the first letter of each word that follows. Then It removes the non-letter chars from the text.  
+    `My name is Nobody` &rarr; `myNameIsNobody`.
+    - **pascal-case**: capitalizes the first letter of each word. Then It removes the non-letter chars from the text.  
+    `My name is Nobody` &rarr; `MyNameIsNobody`.
+    - **snake-case**: separates each word with an underscore character (`_`). The rendered result is lowercased.  
+    `My name is Nobody` &rarr; `my_name_is_nobody`.
+    - **kebab-case**: separates each word with a dash character (`-`). The rendered result is lowercased.  
+    `My name is Nobody` &rarr; `my-name-is-nobody`.
+    - **to-base64**: renders a valid UTF-16 string to it's Base64 encoded representation.  
+    `Hello there! Ā 文 🦄 ❤️` &rarr; `SGVsbG8gdGhlcmUhIMSAIOaWhyDwn6aEIOKdpO+4jw==`  
+    ⚠ this may throw an Error if the input value is not a valid UTF-16 string. ⚠
+    - **from-base64**: renders a valid Base64 string into it's UTF-16 decoded string representation.  
+     `SGVsbG8gdGhlcmUhIMSAIOaWhyDwn6aEIOKdpO+4jw==` &rarr; `Hello there! Ā 文 🦄 ❤️`  
+     ⚠ this may throw an Error if the input value is not a valid Base64 string. ⚠
+    - **camel-to-kebab**: renders a camel-cased string into it's kebab-case representation.
+    - **pascal-to-kebab**: renders a pascal-cased string into it's kebab-case representation.
+- The values and options used/available within the "Control" column are for demonstration purpose only.
+- Use the "Reset controls" button on the top right side of the table in order to restore the initial demo values and options. Alternatively, you could reload the page.
+
+### Usage
+
+<Source dark type={"jsx"} code={`
+import { TextRenderer } from 'react-text-renderer-components';
+
+const Example = () => {
+    return <TextRenderer value={"SOME TEXT"} transform="lower-case" />
+}`
+} />
+
+Back to the [Github Repository](https://github.com/khatastroffik/react-text-renderer-components)

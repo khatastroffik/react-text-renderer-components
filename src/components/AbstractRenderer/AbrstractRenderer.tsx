@@ -8,6 +8,7 @@ export interface IAbstractRendererProps {
 }
 
 export interface IDateValue { value: Date }
+export interface ITextValue { value: string }
 
 export abstract class AbstractRenderer<IRendererValueType = string, IRendererProps extends IAbstractRendererProps = IAbstractRendererProps> extends React.Component<IRendererProps> {
 

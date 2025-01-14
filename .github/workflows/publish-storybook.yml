@@ -32,7 +32,7 @@ jobs:
       - name: Generate test reports
         run: npm run test:ci
       - name: Build Storybook
-        run: npm run build:storybook
+        run: npm run storybook:build
       - name: Configure GH pages
         uses: actions/configure-pages@v5
       - name: Upload Storybook Documentation

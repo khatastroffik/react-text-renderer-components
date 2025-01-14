@@ -1,5 +1,7 @@
 import type { Preview } from "@storybook/react";
 
-const preview: Preview = {};
+const preview: Preview = {
+//   tags: ["autodocs"]
+};
 
 export default preview;

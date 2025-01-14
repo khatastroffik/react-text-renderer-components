@@ -1,6 +1,6 @@
 # react-text-renderer-components
 
-! MANAGE YOUR DATA, NOT THEIR STRING REPRESENTATION !
+&#9889; MANAGE YOUR DATA OBJECTS, NOT THEIR STRING REPRESENTATION &#9889;
 
 This is a zero-dependencies component library providing a set of (pure) text rendering utility components. Those components are accepting common and custom data/field types as input and are rendering their text representation _automatically_.
 
@@ -12,7 +12,14 @@ e.g. to render the text corresponding to a `DateOfBirth` field (Date type) withi
 ![GitHub Issues](https://img.shields.io/github/issues/khatastroffik/react-text-renderer-components)
 ![Package size (minified)](<https://img.shields.io/bundlejs/size/%40khatastroffik%2Freact-text-renderer-components?label=Package%20size%20(minified)>)
 
-## Documentation: Storybook, Changelog and Release note
+## Documentation: Demo, Storybook, Changelog and Release note
+
+### Demo Webapp
+
+A webapp demonstrating the usage of this library is available:
+
+- Demo web app &rarr; [Demo - react-text-renderer-components](https://khatastroffik.github.io/react-text-renderer-components-demo)
+- Demo source code &rarr; [Github - react-text-renderer-components-demo](https://github.com/khatastroffik/react-text-renderer-components-demo)
 
 ### Storybook documentation
 
@@ -31,6 +38,7 @@ Please read the [CHANGELOG](./CHANGELOG.md) (all changes since the beginning) an
 - `DateTimeRenderer` component ([Storybook &rarr; DateTimeRenderer](https://khatastroffik.github.io/react-text-renderer-components/?path=/docs/components-datetimerenderer--datetimerenderer-documentation))
 - `WeekRenderer` component ([Storybook &rarr; WeekRenderer](https://khatastroffik.github.io/react-text-renderer-components/?path=/docs/components-weekrenderer--weekrenderer-documentation))
 - `QuarterRenderer` component ([Storybook &rarr; QuarterRenderer](https://khatastroffik.github.io/react-text-renderer-components/?path=/docs/components-quarterrenderer--quarterrenderer-documentation))
+- `TextRenderer` component ([Storybook &rarr; TextRenderer](https://khatastroffik.github.io/react-text-renderer-components/?path=/docs/components-textrenderer--textrenderer-documentation))
 
 more components to come... (see the ToDos below)
 
@@ -105,7 +113,7 @@ This design allows to avoid repetitions, reduce the size of the compiled code us
 
 - ✅ `WeekRenderer` component
 - ✅ `QuarterRenderer` component
-- ⬛ `TextRenderer` component (with text manipulation like UpperCase, LowerCase, Replace...)
+- ✅ `TextRenderer` component (with text manipulation like UpperCase, LowerCase, SnakeCase, KebabCase, CamelCase, PascalCase, toBase64, fromBase64...)
 - ⬛ `CurrencyRenderer` component
 - ⬛ `CustomRenderer` component i.e the text formating function may be provided from the parent application/component using the CustomRenderer.
 
@@ -293,6 +301,12 @@ npm install -D jest @testing-library/react ts-jest @types/jest ts-node @testing-
 - https://shields.io/badges/npm-package-minimized-gzipped-size
 - https://github.com/inttter/md-badges
 - https://shields.io/badges/dynamic-json-badge
+
+### Base64
+
+- https://developer.mozilla.org/de/docs/Web/API/Window/btoa#unicode-zeichenfolgen
+- https://developer.mozilla.org/de/docs/Web/API/DOMException#invalidcharactererror
+- https://web.dev/articles/base64-encoding?hl=de#put_it_all_together
 
 ### Divers
 
